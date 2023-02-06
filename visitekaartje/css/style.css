@@ -1,0 +1,317 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Elephant;
+  font-weight: normal;
+  font-size: 2em;
+  color: #FFFFFF;
+}
+
+a {
+  color: #08fdd8;
+  text-decoration: none;
+}
+a:hover {
+  color: #e60de6;
+}
+
+i {
+  font-size: 1.6em !important;
+}
+
+.home-page {
+  position: relative;
+  display: flex;
+  gap: 2em;
+  overflow: hidden;
+  color: #FFFFFF;
+  background-color: black;
+}
+.home-page .lamp {
+  content: "";
+  position: absolute;
+  left: 25em;
+  top: -1em;
+  width: 10em;
+  height: 5em;
+  background-color: #1e1e1e;
+  border-radius: 10em 10em 25px 25px;
+}
+.home-page .lamp::before {
+  content: "";
+  position: absolute;
+  left: 3em;
+  top: 5em;
+  width: 4em;
+  height: 2em;
+  border-radius: 0 0 10rem 10rem;
+  background-color: yellow;
+}
+.home-page .lamp::after {
+  content: "";
+  position: absolute;
+  top: 4em;
+  left: 4.5em;
+  width: 20em;
+  height: 11em;
+  border-radius: 50%;
+  filter: blur(90px);
+  background: yellow;
+  transform: translateX(-50%);
+  animation: blinkLight 5s infinite;
+}
+@keyframes blinkLight {
+  50% {
+    opacity: 0.8;
+  }
+}
+.home-page section {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.home-page section:first-of-type {
+  position: relative;
+  perspective: 100px;
+}
+.home-page section:first-of-type div:first-child {
+  position: relative;
+  top: 23%;
+  left: 19%;
+  width: 8.5em;
+  height: 8em;
+  border-radius: 0.2em;
+  background-color: #1e1e1e;
+  transform-style: preserve-3d;
+  transform: rotateY(23deg);
+}
+.home-page section:first-of-type div:first-child span {
+  position: absolute;
+  top: 0.5em;
+  left: 0.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.5em;
+  height: 7em;
+  padding: 1em;
+  border-radius: inherit;
+  box-shadow: inset 0 0 16px #4b7a8d;
+  background-color: #1e1e1e;
+}
+.home-page section:first-of-type div:first-child span button {
+  height: 100%;
+  border-radius: 50%;
+}
+.home-page section:first-of-type div:first-child span button img {
+  height: 100%;
+  box-shadow: 0 0 10px #4b7a8d;
+  border-radius: 50%;
+  animation: blinkLight 1s infinite;
+}
+.home-page section:first-of-type div:first-child::before {
+  content: "";
+  position: absolute;
+  top: 8em;
+  left: 2.7em;
+  width: 2em;
+  height: 2em;
+  background-color: rgb(102, 102, 102);
+  z-index: 1;
+}
+.home-page section:first-of-type div:first-child::after {
+  content: "";
+  position: absolute;
+  top: 9em;
+  left: 1em;
+  width: 7em;
+  height: 2.5em;
+  border-radius: 50%;
+  background-color: inherit;
+  transform: rotateX(85deg) rotateY(4deg);
+}
+.home-page section:first-of-type div:nth-of-type(2) {
+  position: absolute;
+  top: 16.5em;
+  left: 11.5em;
+  width: 8.5em;
+  height: 2.5em;
+  border-radius: 0.5em;
+  box-shadow: -1em 0em 1em rgba(0, 0, 0, 0.6), 0 0 0 1px #aaa inset;
+  background-image: linear-gradient(90deg, #888, #ccc);
+  transform: rotateY(28deg) rotateX(109deg);
+}
+.home-page section:first-of-type div:last-child {
+  position: absolute;
+  top: 14.5em;
+  left: 18.5em;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 0.5em;
+  box-shadow: -1em 0em 1em rgba(0, 0, 0, 0.6), 0 0 0 1px #aaa inset;
+  background-image: linear-gradient(90deg, #888, #ccc);
+  transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg);
+}
+.home-page section:last-of-type {
+  padding: 2em;
+  text-align: center;
+}
+.home-page section:last-of-type h1 {
+  margin-top: 0.5em;
+  font-size: 2.5em;
+  border-bottom: solid 0.2em black;
+}
+.home-page section:last-of-type ul {
+  padding: 20px 80px;
+}
+.home-page section:last-of-type ul li:not(:last-of-type) {
+  margin-bottom: 0.5em;
+}
+.home-page section:last-of-type ul figure {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  font-size: 1.5em;
+}
+.home-page section:last-of-type ul img {
+  width: 2em;
+}
+
+.info-page {
+  position: relative;
+  display: gird;
+  gap: 2em;
+  overflow: hidden;
+}
+.info-page section:first-child {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 4fr 1fr;
+  padding: 0.5em;
+  text-align: center;
+  border-radius: 0.5em 0.5em 0 0;
+  background-color: #1e1e1e;
+}
+.info-page section:first-child div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.3em;
+  border-radius: 0.5em;
+  background-color: #ccc;
+  text-align: left;
+}
+.info-page section:first-child div i {
+  opacity: 0.5;
+  margin-right: 0.5em;
+}
+.info-page section:first-child aside:first-child {
+  display: flex;
+  gap: 1.5em;
+}
+.info-page section:first-child aside:first-child .fa-arrow-right:hover {
+  color: #08fdd8;
+  cursor: pointer;
+}
+.info-page section:first-child aside:last-child {
+  text-align: end;
+}
+.info-page section:first-child aside:last-child button {
+  background: red;
+  width: 4em;
+  padding: 0.3em;
+  border: none;
+  border-radius: 0.5em;
+}
+.info-page section:first-child aside:last-child button:hover i {
+  color: #08fdd8;
+}
+.info-page section:last-child, .info-page section:nth-child(2) {
+  height: 90%;
+  border-radius: 0 0 0.5em 0.5em;
+}
+.info-page section:nth-child(2) {
+  background-color: #ccc;
+}
+.info-page section:last-child {
+  padding-top: 1em;
+  display: grid;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.info-page section:last-child img {
+  height: 10em;
+}
+.info-page section:last-child a {
+  font-size: 1.5em;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  height: 30em;
+  width: 60em;
+  padding: 3em;
+  border-radius: 25px;
+  background-color: black;
+}
+
+.zoomIn {
+  animation-name: fade-zoomIn;
+  animation-duration: 2s;
+}
+
+.zoomOut {
+  animation-name: fade-zoomOut;
+  animation-duration: 2s;
+}
+
+@keyframes fade-zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fade-zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

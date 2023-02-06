@@ -1,0 +1,65 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.card{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    height: 30em;
+    width: 60em;
+    padding: 3em;
+    border-radius: 25px;
+    background-color: color(secondary);
+}
+.zoomIn{
+    animation-name: fade-zoomIn;
+    animation-duration: 2s;
+}
+
+.zoomOut{
+    animation-name: fade-zoomOut;
+    animation-duration: 2s;
+}
+
+@keyframes fade-zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+   to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-zoomOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+}
