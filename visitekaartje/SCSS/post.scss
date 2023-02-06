@@ -253,6 +253,7 @@
         &:last-child, &:nth-child(2) {
             height: 90%;
             border-radius: 0 0 .5em .5em;
+            overflow: hidden;
             
         }
 
