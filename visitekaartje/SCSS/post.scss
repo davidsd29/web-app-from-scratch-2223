@@ -5,8 +5,21 @@
     overflow: hidden;
     color: color(quaternary);
     background-color: black;
+    opacity: 1; 
+ 
 
-        .lamp {
+
+    
+        // &:hover{
+
+   
+        //     clip-path: 30px at 35px 35px;
+        //     //transform:translate(-20%,-20%)
+         
+        // }
+
+
+    .lamp {
         content: "";
         position: absolute;
         left: 25em;
@@ -41,8 +54,6 @@
                 background: yellow;
                 transform: translateX(-50%);
                 animation: blinkLight 5s infinite;
-               
-            
             }
         }
         
@@ -55,7 +66,6 @@
     section {
         height: 100%;
         width: 100%;
-        z-index: 1;
 
         //Left Section
         &:first-of-type {
@@ -193,6 +203,8 @@
     display: gird;
     gap: 2em;
     overflow: hidden;
+    clip-path: circle(100%);
+    transition: clip-path 1s;
 
     section{
         &:first-child{
@@ -224,7 +236,7 @@
                     display: flex;
                     gap: 1.5em; 
 
-                    .fa-arrow-right:hover {
+                    i:hover {
                         color: color(tertiary);
                         cursor: pointer;
                     }

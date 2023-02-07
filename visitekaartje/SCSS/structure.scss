@@ -16,7 +16,7 @@ button {
 }
 
 .hidden{
-    display:none !important;
+    display: none !important;
 }
 
 .card{
@@ -29,26 +29,52 @@ button {
     border-radius: 25px;
     background-color: color(secondary);
 }
-.zoomIn{
-    animation-name: fade-zoomIn;
-    animation-duration: 2s;
+
+.close{
+    clip-path: circle(0);
 }
 
+.zoomIn{
+    animation-name: fade-zoomIn;
+    animation-duration: 3s;
+
+}
+
+  @keyframes zoom2 {
+    0% { transform: scale(1);}
+
+    80% {opacity: 0;}
+    100% { 
+        transform: scale(50); 
+        opacity: 0;
+    }
+  }
+
 .zoomOut{
-    animation-name: fade-zoomOut;
-    animation-duration: 2s;
+    transform-origin: 12em 12em;
+    animation:  zoom2  4s cubic-bezier(0.65, 0, 0.35, 1); //easeInOutCubic
 }
 
 @keyframes fade-zoomIn {
-    from {
+    from { 
+        transform: scale(30); 
         opacity: 0;
-        transform: scale(0);
     }
-
-   to {
-        opacity: 1;
+    to { 
         transform: scale(1);
-    }
+        opacity: 1;
+}
+
+
+//     from {
+//         opacity: 0;
+//         transform: scale(0);
+//     }
+
+//    to {
+//         opacity: 1;
+//         transform: scale(1);
+//     }
 }
 
 @keyframes fade-zoomOut {
