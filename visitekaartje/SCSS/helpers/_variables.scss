@@ -1,18 +1,14 @@
-
- $colors: (
+$colors: (
      primary: #1e1e1e,
      secondary: black,
      tertiary: #08fdd8,
      quaternary: #FFFFFF,
      focus: #1B649C,
-     hover: #e60de6,
-     mouse-color: #2696E8,
-     post:#727272,
-     btn-text:gray,
- );
+     hover: #e60de6
+);
 
- // Bootstrap breakpoints
- $breakpoint-sm: 576px;
- $breakpoint-md: 768px;
- $breakpoint-lg: 992px;
- $breakpoint-xl: 1200px;
+// Media breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

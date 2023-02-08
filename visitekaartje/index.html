@@ -11,7 +11,7 @@
 </head>
 <body>
     <main>
-        <div class="home-page card">   
+        <div class="home-page card float">   
             <div class="lamp"></div>
             <section>
                 <!-- Monitor -->
@@ -29,30 +29,40 @@
             </section>
 
             <section>
-                <h1 class="name"></h1>
+                <h1 id="name"></h1>
                 <ul>
                     <li>
                         <figure>
-                            <img src="img/logo.png" alt="">
-                            <p>Insta</p>
+                            <i class="fa fa-github"></i>
+                            <a href="" id="gitHub-url">Github</a>
                         </figure>
                     </li>
+                    
                     <li>
                         <figure>
-                            <img src="img/logo.png" alt="">
+                            <i class="fa fa-linkedin"></i>
+                            <a href="">Linked In</a>
+                        </figure>
+                    </li>
+
+                    <li>
+                        <figure>
+                            <i class="fa fa-phone"></i>
+                            <a href="tel:+31640675000">+31640675000</a>
+                        </figure>
+                    </li>
+                    
+                    <li>
+                        <figure>
+                            <i class="fa fa-globe"></i>
                             <a href="" class="website-url"></a>
                         </figure>
                     </li>
+
                     <li>
                         <figure>
-                            <img src="img/logo.png" alt="">
-                            <a href="" id="gitHub-url"></a>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <img src="img/logo.png" alt="">
-                            <a href="">Linked In</a>
+                            <i class="fa fa-envelope"></i>
+                            <a href="mailto:davidsdankwah@gmail.com">davidsdankwah@gmail.com</a>
                         </figure>
                     </li>
                 </ul>
@@ -60,11 +70,11 @@
         </div>
 
         <div class="info-page card hidden">
-            <section>
+            <nav>
                 <aside>
                     <i class="fa fa-arrow-left" id="prev"></i>
                     <i class="fa fa-arrow-right" id="next"></i>
-                    <i class="fa fa-refresh"></i>
+                    <i class="fa fa-refresh" id="refresh"></i>
                 </aside>
 
                 <div>
@@ -77,32 +87,25 @@
                         <i class="fa fa-power-off"></i>
                     </button>
                 </aside>
-            </section>
+            </nav>
 
             <img id="preloader" src="img/preloader.gif" alt="Preloader">
 
             <section class="skill-page">
-                <ul>
-                    <li>er komt iets</li>
-                    <li>er komt iets</li>
-                    <li>er komt iets</li>
-                    <li>er komt iets</li>
-                    <li>er komt iets</li>
-                </ul>
+                <h1>Moet je nog verzinnen gap</h1>
             </section>
+
             <section class="contact-page hidden">
                 <figure>
                     <img src="img/logo.png" alt="Daviddankwah.com Logo">
                 </figure>
-                <h1 class="name"></h1>
-                <a href="mailto:davidsdankwah@gmail.com">davidsdankwah@gmail.com"</a>
-                <a href="tel:+31640675000">+31640675000</a>
+                <h1>David's Customs</h1>
+                <p><i>Let's work together</i></p>
             </section>
         </div>
     </main>
 
     <script src="js/cards.js"></script>
     <script src="js/API.js"></script>
-    
 </body>
 </html>

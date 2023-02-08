@@ -1,23 +1,10 @@
 .home-page {
-    position: relative;
     display: flex;
     gap: 2em;
     overflow: hidden;
     color: color(quaternary);
     background-color: black;
     opacity: 1; 
- 
-
-
-    
-        // &:hover{
-
-   
-        //     clip-path: 30px at 35px 35px;
-        //     //transform:translate(-20%,-20%)
-         
-        // }
-
 
     .lamp {
         content: "";
@@ -27,7 +14,7 @@
         width: 10em;
         height: 5em;
         background-color: color(primary);
-        border-radius: 10em 10em 25px 25px;
+        border-radius: 10em 10em 1.5em 1.5em;
 
         //Lamp Bulb
             &::before {
@@ -38,7 +25,7 @@
                 width: 4em;
                 height: 2em;
                 border-radius: 0 0 10rem 10rem;
-                background-color: yellow;
+                background-color: color(quaternary);
             }
 
             //Light Effect
@@ -50,8 +37,8 @@
                 width: 20em;
                 height: 11em;
                 border-radius: 50%;
-                filter: blur(90px);
-                background: yellow;
+                filter: blur(5.6em);
+                background: color(quaternary);
                 transform: translateX(-50%);
                 animation: blinkLight 5s infinite;
             }
@@ -64,13 +51,12 @@
         }
 
     section {
-        height: 100%;
         width: 100%;
 
         //Left Section
         &:first-of-type {
             position: relative;
-            perspective: 100px;
+            perspective: 6.25em;
 
             //Monitor
             div:first-child{
@@ -96,8 +82,17 @@
                     height: 7em;
                     padding: 1em;
                     border-radius: inherit;
-                    box-shadow: inset 0 0 16px #4b7a8d;
+                    box-shadow: inset 0 0 1em #4b7a8d;
                     background-color: color(primary);
+                    transition: 1s;
+
+                    &:hover {
+                        box-shadow: inset 0 0 5em #4b7a8d;
+
+                        img {
+                            filter: contrast(0.5);
+                        }
+                    }
                     
                     button{
                         height: 100%;
@@ -105,8 +100,9 @@
 
                         img {
                             height: 100%;
-                            box-shadow: 0 0 10px #4b7a8d;
+                            box-shadow: 0 0 0.6em #4b7a8d;
                             border-radius: 50%;
+                            transition: 1s;
                             animation: blinkLight 1s infinite;
                         }
                     }
@@ -146,7 +142,7 @@
                 width: 8.5em;
                 height: 2.5em;
                 border-radius: 0.5em;
-                box-shadow: -1em 0em 1em rgb(0 0 0 / 60%), 0 0 0 1px #aaa inset;
+                box-shadow: -1em 0em 1em rgb(0 0 0 / 60%), 0 0 0 0.06em #aaa inset;
                 background-image: linear-gradient(90deg, #888, #ccc);
                 transform: rotateY(28deg) rotateX(109deg);
             }
@@ -159,25 +155,78 @@
                 width: 1.5em;
                 height: 1.5em;
                 border-radius: 0.5em;
-                box-shadow: -1em 0em 1em rgb(0 0 0 / 60%), 0 0 0 1px #aaa inset;
+                box-shadow: -1em 0em 1em rgb(0 0 0 / 60%), 0 0 0 0.06em #aaa inset;
                 background-image: linear-gradient(90deg, #888, #ccc);
                 transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg);
+
+                &:hover{
+                    animation: shake 0.5s infinite;
+                    
+                }
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(0.06em, 0.06em);
+            }
+
+            10% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(-0.06em, -0.12em);
+            }
+
+            20% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(-0.18em, 0em);
+            }
+
+            30% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(0.18em, 0.12em);
+            }
+
+            40% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(0.06em, -0.06em);
+            }
+
+            50% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(-0.06em, 0.12em);
+            }
+
+            60% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(-0.18em, 0.06em);
+            }
+
+            70% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(0.18em, 0.06em);
+            }
+
+            80% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(-0.06em, -0.06em);
+            }
+
+            90% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(0.06em, 0.12em);
+            }
+
+            100% {
+                transform: rotateY(31deg) rotateX(100deg) rotateZ(96deg) translate(0.06em, -0.12em) rotate(-1deg);
             }
         }
 
         //Right Section
         &:last-of-type {
+            width: 60%;
             padding: 2em;
+            padding-top: 3.5em;
             text-align: center;
 
             h1 {
                 margin-top: .5em;
                 font-size: 2.5em;
-                border-bottom: solid .2em black;
+                border-bottom: solid .1em color(quaternary);
             }
 
             ul {
-                padding: 20px 80px;
+                padding: 1.2em 5em;
 
                 li:not(:last-of-type){
                     margin-bottom: .5em;
@@ -188,6 +237,12 @@
                     gap: 2em;
                     align-items: center;
                     font-size: 1.5em;
+                    
+                    &:hover {
+                        a, i{
+                            color: color(hover);
+                        }
+                    }
                 }
 
                 img {
@@ -199,86 +254,106 @@
 }
 
 .info-page {
-    position: relative;
-    display: gird;
-    gap: 2em;
-    overflow: hidden;
     clip-path: circle(100%);
     transition: clip-path 1s;
 
-    section{
-        &:first-child{
-            display: grid;
+    &.close {
+        clip-path: circle(0);
+    }
+
+    nav {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 4fr 1fr;
+        padding: .5em;
+        text-align: center;
+        border-radius: .5em .5em 0 0;
+        background-color: color(primary);
+        
+        i {
+            color: color(secondary);
+        }
+
+        div{
+            display: flex;
             align-items: center;
-            grid-template-columns: 1fr 4fr 1fr;
-            padding: .5em;
-            text-align: center;
-            border-radius: .5em .5em 0 0;
-            background-color: color(primary);
-            
-            div{
+            width: 100%;
+            padding: .3em;
+            border-radius: .5em;
+            background-color: #ccc;
+            text-align: left;
+
+            i {
+                opacity: .5;
+                margin-right: .5em;
+            }
+        }
+
+        aside{
+            &:first-child {
                 display: flex;
-                align-items: center;
-                width: 100%;
-                padding: .3em;
-                border-radius: .5em;
-                background-color: #ccc;
-                text-align: left;
+                gap: 1.5em; 
 
                 i {
-                    opacity: .5;
-                    margin-right: .5em;
-                }
-            }
-
-            aside{
-                &:first-child {
-                    display: flex;
-                    gap: 1.5em; 
-
-                    i:hover {
+                    &:hover {
                         color: color(tertiary);
                         cursor: pointer;
                     }
+
+                    &:focus {
+                        color: color(focus);
+                    }
                 }
+            }
 
-                &:last-child {
-                    text-align: end;
+            &:last-child {
+                text-align: end;
 
-                    button {
-                        background: red;
-                        width: 4em;
-                        padding: .3em;
-                        border: none;
-                        border-radius: .5em;
+                button {
+                    background: red;
+                    width: 4em;
+                    padding: .3em;
+                    border: none;
+                    border-radius: .5em;
 
-                        &:hover {
-                            i{
-                                color: color(tertiary);
-                            }
+                    &:hover, &:focus {
+                        box-shadow:  0 0 1em red;
+                        i {
+                            color: color(tertiary);
+                        }
+                    }
+
+                    &:active {
+                        background: darkred;
+                        i {
+                            color: color(tertiary);
                         }
                     }
                 }
             }
         }
-
-        &:last-child, &:nth-child(2) {
+    }
+    section{
+        &:last-child, &:nth-child(3) {
             height: 90%;
             border-radius: 0 0 .5em .5em;
+            border: 0.06em solid color(primary);
+            border-top: none;
             overflow: hidden;
             
         }
 
-        &:nth-child(2) {
-            background-color: #ccc;
+        //Skill page
+        &.skill-page {
+            color: inherit;
         }
 
-        &:last-child{
+        //Contact page
+        &.contact-page{
             padding-top: 1em;
             display: grid;
             text-align: center;
-            border: 1px solid #ccc;
-            border-top: none;
+         
 
             img{
                 height: 10em;
