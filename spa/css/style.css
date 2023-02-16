@@ -9,17 +9,74 @@ header {
   top: 0;
   height: 4em;
   width: 100%;
+  text-align: center;
   background-color: darkgray;
+  box-shadow: 0px -5px 25px 5px black;
+}
+header ul {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr;
+  justify-content: center;
+  align-items: center;
+}
+header ul li {
+  margin-top: 1em;
+}
+header .fa {
+  font-size: 2em;
+}
+header .fa.fa-barcode:before {
+  padding: 0.1em;
+  border: 0.1em solid rgba(0, 0, 0, 0.5019607843);
 }
 
 footer {
-  position: sticky;
+  position: fixed;
+  left: 0;
   bottom: 0;
   height: 10dvh;
+  width: 100%;
   background-color: darkgray;
+  box-shadow: 0px 5px 25px 5px black;
 }
 footer ul {
   display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  align-items: flex-end;
+  width: 100%;
+}
+footer ul li {
+  display: block;
+  padding: 10px;
+  min-width: 48px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+footer ul li .fa {
+  font-size: 2em;
+}
+footer ul li p {
+  margin-top: 0.5em;
+}
+
+.go-card, .reclame, main > section {
+  margin: 1em;
+}
+
+.go-card {
+  height: 11em;
+  width: 18em;
+  border-radius: 1.5em;
+  background-color: rgb(177, 230, 255);
+}
+
+.reclame {
+  height: 7em;
+  width: 14em;
+  border-radius: 1.5em;
+  background-color: rgb(255, 190, 183);
 }
 
 ul {
@@ -31,13 +88,40 @@ main {
   justify-content: center;
   overflow-y: scroll;
   padding: 2em;
+  overflow-x: hidden;
+}
+main > section {
+  padding: 1em;
+  text-align: center;
+  font-size: 1.5em;
+  border: 1px solid #ccc;
+  border-radius: 1.5em;
+}
+main > section img {
+  width: 9em;
 }
 
-.go-card {
-  height: 11em;
-  width: 18em;
-  border-radius: 1.5em;
-  background-color: blue;
+#scanner {
+  position: relative;
+  width: 400px;
+}
+#scanner video {
+  width: 100%;
+}
+#scanner button {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+li:hover i, li:hover i + p {
+  color: #0dd8e6;
+}
+li:focus-visible i, li:focus-visible i + p {
+  color: #1B649C;
+}
+li:active i, li:active i + p {
+  color: #1B649C;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -7,12 +7,53 @@ main {
     justify-content: center;
     overflow-y: scroll;
     padding: 2em;
+    overflow-x: hidden;
+
+    > section {
+        padding: 1em;
+        text-align: center;
+        font-size: 1.5em;
+        border: 1px solid #ccc;
+        border-radius: 1.5em;
+
+        img {
+            width: 9em;
+        }
+
+    }
 }
 
+#scanner {
+    position: relative;
+    width: 400px;
 
-.go-card {
-    height: 11em;
-    width: 18em;
-    border-radius: 1.5em;
-    background-color: blue;
+    video {
+        width: 100%;
+    }
+
+    button {
+        position: absolute;
+        top: 5%;
+        left: 5%;
+    }
+}
+
+li {
+    &:hover{
+        i, i +p {
+            color: color(hover);
+        }
+    }
+
+    &:focus-visible {
+        i, i+p {
+            color: color(focus);
+        }
+    }
+    
+    &:active {
+        i, i+p {
+            color: color(focus);
+        }
+    }
 }
