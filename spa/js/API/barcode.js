@@ -4,7 +4,7 @@ const scanner = new Html5QrcodeScanner("scanner", {
 // Scanner will be initialized in DOM inside element with id of 'scanner'\
 // Box styling (relative to scanner element width)
     qrbox: {
-        width: 500,
+        width: 300,
         height: 250,
     },  
     // Frames per second to attempt a scan

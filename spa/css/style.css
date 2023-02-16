@@ -12,6 +12,7 @@ header {
   text-align: center;
   background-color: darkgray;
   box-shadow: 0px -5px 25px 5px black;
+  z-index: 100;
 }
 header ul {
   display: grid;
@@ -22,12 +23,13 @@ header ul {
 header ul li {
   margin-top: 1em;
 }
+header ul li button {
+  padding: 0.3em;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.514);
+}
 header .fa {
   font-size: 2em;
-}
-header .fa.fa-barcode:before {
-  padding: 0.1em;
-  border: 0.1em solid rgba(0, 0, 0, 0.5019607843);
 }
 
 footer {
@@ -83,6 +85,10 @@ ul {
   list-style: none;
 }
 
+#blur {
+  filter: none;
+}
+
 main {
   display: grid;
   justify-content: center;
@@ -102,16 +108,30 @@ main > section img {
 }
 
 #scanner {
-  position: relative;
-  width: 400px;
+  border: none !important;
+}
+#scanner:has(video) {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+#scanner:has(video) button {
+  top: -50%;
+  left: 8%;
 }
 #scanner video {
-  width: 100%;
+  width: 100% !important;
+  box-shadow: 0px 0px 13em 18em black;
 }
 #scanner button {
   position: absolute;
-  top: 5%;
-  left: 5%;
+  top: -5%;
+  left: 50%;
+  height: 3em;
+  transform: translate(-50%, -50%);
 }
 
 li:hover i, li:hover i + p {
