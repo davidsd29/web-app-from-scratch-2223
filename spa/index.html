@@ -12,10 +12,9 @@
     <header>
         <ul>
             <li>
-<button id="html5-qrcode-button-camera-start" class="html5-qrcode-element" type="button">
-    <i class="fa fa-barcode"></i>
-
-</button>
+                <button id="start-camera-scan">
+                    <i class="fa fa-barcode"></i>
+                </button>
             </li>
             <li>
 
@@ -28,54 +27,161 @@
         </ul>
     </header>
     <main>
-        
-        <section id="scanner"></section>
-
-        <!-- <section>
-            <img src="img/Happy-Emoji-PNG.png" alt="Happy emoji that expreses your welcome in the app">
-            <h2>Welcome Jhon Doe</h2>
-        </section> -->
-        <div class="go-card"></div>
-        <div class="go-card"></div>
-        <div class="go-card"></div>
-        <div class="go-card"></div>
-        <div class="go-card"></div>
-
-        <div class="reclame">
-            <h3></h3>
-            <!-- <img src="" alt="Reclame"> -->
-        </div>
-        
-        <article>
-            <h2>Recent products</h2>
-            <p>A selection of your scaned products</p>
-
-            <div class="recent-products">
-
+        <button id="stop-camera-scan"></button>
+        <div id="scanner"></div>
+        <section id="home" class="hidden">
+           
+            <h1></h1>
+            <!-- <section>
+                <img src="img/Happy-Emoji-PNG.png" alt="Happy emoji that expreses your welcome in the app">
+                <h2>Welcome Jhon Doe</h2>
+            </section> -->
+            <div class="go-card"></div>
+            <div class="go-card"></div>
+            <div class="go-card"></div>
+            <div class="go-card"></div>
+            <div class="go-card"></div>
+    
+            <div class="reclame">
+                <h3></h3>
+                <!-- <img src="" alt="Reclame"> -->
             </div>
-        </article>
+            
+            <article>
+                <h2>Recent products</h2>
+                <p>A selection of your scaned products</p>
+    
+                <div class="recent-products" class="hidden">
+    
+                </div>
+            </article>
+        </section>
+
+      <section id="product-detail">
+        <section class="heading">
+            <div>
+                <img src="img/Happy-Emoji-PNG.png" alt="">
+                <h1>papiprika</h1> 
+            </div>
+            <button>Add to list</button>
+        </section>
+
+        <ul>
+            <li>
+                <article>
+                    <h2>Nutrition score</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus est, consequat in neque eget, finibus tristique
+                    orci. Maecenas ornare consectetur diam vitae volutpat. Nam convallis sem a justo ultrices ultricies.</p>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <h2>Product content</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus est, consequat in neque eget, finibus
+                        tristique
+                        orci. Maecenas ornare consectetur diam vitae volutpat. Nam convallis sem a justo ultrices ultricies.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus est, consequat in neque eget, finibus
+                        tristique
+                        orci. Maecenas ornare consectetur diam vitae volutpat. Nam convallis sem a justo ultrices ultricies.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus est, consequat in neque eget, finibus
+                        tristique
+                        orci. Maecenas ornare consectetur diam vitae volutpat. Nam convallis sem a justo ultrices ultricies.</p>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <h2>Nutritional values</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus est, consequat in neque eget, finibus
+                        tristique
+                        orci. Maecenas ornare consectetur diam vitae volutpat. Nam convallis sem a justo ultrices ultricies.</p>
+                </article>
+            </li>
+        </ul>
+        <!-- nutri score -->
+            <section id="nutrition-score"></section>
+            <section id="product-content"></section>
+            <!-- <section></sec tion> -->
+            <section id="nutritional-values"></section>
+
+        </section>            
+        
+        <section id="products" class="hidden">
+            <h1></h1>
+
+            <ul>
+                <li>
+                    <img src="img/Happy-Emoji-PNG.png" alt="">
+                    <aside>
+                        <h3>Naam product</h3>
+                        <p>3x</p>
+                    </aside>
+                </li>
+                <li>
+                    <img src="img/Happy-Emoji-PNG.png" alt="">
+                    <aside>
+                        <h3>Naam product</h3>
+                        <p>3x</p>
+                    </aside>
+                </li>
+                <li>
+                    <img src="img/Happy-Emoji-PNG.png" alt="">
+                    <aside>
+                        <h3>Naam product</h3>
+                        <p>3x</p>
+                    </aside>
+                </li>
+            </ul>
+
+        </section>        
+        
+        <section id="shopping-list" class="hidden">
+            <h1></h1>
+            <ul>
+                <li>
+                    <img src="img/Happy-Emoji-PNG.png" alt="">
+                    <aside>
+                        <h3>Naam product</h3>
+                        <p>3x</p>
+                    </aside>
+                </li><li>
+                    <img src="img/Happy-Emoji-PNG.png" alt="">
+                    <aside>
+                        <h3>Naam product</h3>
+                        <p>3x</p>
+                    </aside>
+                </li><li>
+                    <img src="img/Happy-Emoji-PNG.png" alt="">
+                    <aside>
+                        <h3>Naam product</h3>
+                        <p>3x</p>
+                    </aside>
+                </li>
+            </ul>
+        </section>
     </main>
 
     <footer>
         <nav>
             <ul>
                 <li>
-                    <i class="fa fa-home"></i>
+                    <a href="#home"><i class="fa fa-home"></i></a>
                     <p>Home</p>
                 </li>
 
                 <li>
-                    <i class="fa fa-cutlery"></i>
+                    <a href="#recipe"><i class="fa fa-cutlery"></i></a>
                     <p>Recept</p>
                 </li>
 
                 <li>
-                    <i class="fa fa-apple"></i>
+                    <a href="#products"><i class="fa fa-apple"></i></a>
                     <p>Product</p>
                 </li>
 
                 <li>
-                    <i class="fa fa-shopping-basket"></i>
+                    <a href="#shopping-list"><i class="fa fa-shopping-basket"></i></a>
                     <p>Lijst</p>
                 </li>
             </ul>
@@ -83,6 +189,7 @@
     </footer>
     <!-- <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" type="text/javascript"></script>
-    <script src="js/API/barcode.js" type="text/javascript"></script>
+    <script src="js/script.js" type="module"></script>
+    <!-- <script src="js/API/fetch-product.js" type="module"></script> -->
 </body>
 </html>

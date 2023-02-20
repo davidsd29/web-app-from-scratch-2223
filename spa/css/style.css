@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   position: sticky;
   top: 0;
@@ -84,9 +88,17 @@ footer ul li p {
 ul {
   list-style: none;
 }
+ul a {
+  text-decoration: none;
+  color: inherit;
+}
 
 #blur {
   filter: none;
+}
+
+.hidden {
+  display: none;
 }
 
 main {
@@ -96,19 +108,81 @@ main {
   padding: 2em;
   overflow-x: hidden;
 }
-main > section {
+main > section:not(#product-detail) {
   padding: 1em;
   text-align: center;
   font-size: 1.5em;
   border: 1px solid #ccc;
   border-radius: 1.5em;
+  scroll-margin-top: 100px;
+  scroll-margin-bottom: 100px;
+  transition: 1s;
 }
-main > section img {
+main > section:not(#product-detail) img {
   width: 9em;
+}
+main > section:not(#product-detail)#shopping-list li, main > section:not(#product-detail)#products li {
+  display: flex;
+  gap: 3em;
+  padding: 0.5em;
+  margin-top: 1em;
+  box-shadow: 1px 5px 12px 0px black;
+  border-bottom: 1px solid #ccc;
+}
+main > section:not(#product-detail)#shopping-list li img, main > section:not(#product-detail)#products li img {
+  width: 20%;
+}
+main > section:not(#product-detail)#shopping-list li aside, main > section:not(#product-detail)#products li aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  width: 100%;
+}
+main > section:not(#product-detail)#shopping-list li aside h3, main > section:not(#product-detail)#products li aside h3 {
+  text-align: left;
+}
+main > section:not(#product-detail)#shopping-list li aside p, main > section:not(#product-detail)#products li aside p {
+  text-align: right;
+}
+main #product-detail {
+  padding: 1em;
+  scroll-margin-top: 100px;
+  scroll-margin-bottom: 100px;
+  transition: 1s;
+}
+main #product-detail .heading div {
+  display: flex;
+  flex-wrap: wrap;
+}
+main #product-detail .heading div img {
+  width: 100%;
+  height: 10em;
+}
+main #product-detail .heading button {
+  width: 100%;
+  padding: 1em;
+  color: white;
+  border-radius: 1em;
+  font-style: bold;
+  font-weight: bold;
+  background-color: blue;
+}
+main #product-detail .heading h1 {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+main #product-detail li {
+  display: flex;
+  gap: 3em;
+  padding: 0.5em;
+  margin-top: 1em;
+  border-bottom: 1px solid #333;
 }
 
 #scanner {
-  border: none !important;
+  padding: none;
+  border: none;
 }
 #scanner:has(video) {
   position: absolute !important;
@@ -118,20 +192,20 @@ main > section img {
   transform: translate(-50%, -50%);
   z-index: 100;
 }
-#scanner:has(video) button {
-  top: -50%;
-  left: 8%;
-}
 #scanner video {
   width: 100% !important;
   box-shadow: 0px 0px 13em 18em black;
 }
-#scanner button {
+
+#stop-camera-scan {
   position: absolute;
-  top: -5%;
-  left: 50%;
-  height: 3em;
+  top: 10%;
+  left: 12%;
+  display: none;
+  height: 2em;
+  width: 2em;
   transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 
 li:hover i, li:hover i + p {
