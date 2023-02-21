@@ -1,56 +1,39 @@
-import {FetchProduct} from './API/fetch-product.js';
 import {GetRouter} from './router.js';
-// import {productInfo} from './API/fetch-product.js';
+import {StartScan} from './scan.js';
+import {StopScanning} from './scan.js';
+import {groceries} from './set-list.js';
+import {GetListData} from './API/fetch-product.js';
 
-const scan = {
-    start: document.getElementById("start-camera-scan"),
-    stop: document.getElementById("stop-camera-scan"),
-} 
-const scanner = new Html5Qrcode("scanner");
 
-scan.stop.addEventListener("click", stopScanning);
-scan.start.addEventListener("click", () => {
-    // Set delay on appearance of stopscan button
-    setTimeout(function() {scan.stop.style.display = "block";}, 1400);
-    const config = { fps: 10, qrbox: { width: 250, height: 250 } };
-    const qrCodeSuccessCallback = (barcode) => {
-        const productInfo = FetchProduct(barcode);
-        stopScanning();
-        pages.detail.classList.remove("hidden");
-        console.log(productInfo);
-        yolo()
-        // DisplayProductDetail(productInfo);
-    };
 
-    scanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback).catch((err) => {
-        console.log(err);
+window.addEventListener("DOMContentLoaded", () => {
+const listBtn = document.querySelector("footer li:last-of-type a")
+
+    const scan = {
+        start: document.getElementById("start-camera-scan"),
+        stop: document.getElementById("stop-camera-scan"),
+    } 
+
+    scan.stop.addEventListener("click", () => {
+        StopScanning()
+        scan.stop.style.display = "none";
     });
-}); 
 
+    scan.start.addEventListener("click", () => {
+        // Set delay on appearance of stopscan button
+        setTimeout(function() {scan.stop.style.display = "block";}, 1400);
+        StartScan();
+        
+    }); 
 
-export function yolo(data){ /*Jeffrey hielp */
-    console.log(data)
-}
-
-// Stops scanning of the
-function stopScanning() {
-    scanner.stop().then((ignore) => {
-        // QR Code scanning is stopped.
-        // Clears scanning instance. Stops the camera
-        scanner.clear();
-
-        // Removes reader element from DOM since no longer needed
-        document.getElementById("scanner").remove();
-    })
-    .catch((err) => {
-        // Stop failed, handle it.
-        console.log("Stop function faild, please try again");
+    listBtn.addEventListener("click", () => {
+        GetListData(groceries);
     });
-}
 
+    window.onload = GetRouter(); 
+    window.addEventListener('hashchange', () => {
+        GetRouter();
+    }, false);
 
-
-// window.onload = router(); 
-window.addEventListener('hashchange', function () {
-    GetRouter();
-}, false);
+    console.log("DOM fully loaded and parsed");
+});

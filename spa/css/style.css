@@ -60,20 +60,35 @@ footer ul li {
   align-items: center;
   text-align: center;
 }
+footer ul li a {
+  position: relative;
+}
 footer ul li .fa {
   font-size: 2em;
 }
 footer ul li p {
   margin-top: 0.5em;
 }
+footer ul li span {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  display: none;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  color: #FFFFFF;
+  background-color: red;
+  box-shadow: 0px 1px 10px 1px red;
+}
 
 .go-card, .reclame, main > section {
-  margin: 1em;
+  margin-bottom: 1em;
 }
 
 .go-card {
   height: 11em;
-  width: 18em;
+  width: 100%;
   border-radius: 1.5em;
   background-color: rgb(177, 230, 255);
 }
@@ -85,6 +100,54 @@ footer ul li p {
   background-color: rgb(255, 190, 183);
 }
 
+.required {
+  padding: 0.2em;
+  border: 2px solid red;
+}
+
+.nutriscore {
+  display: flex;
+  background-color: rgb(200, 200, 200);
+  padding: 1em;
+}
+.nutriscore li {
+  display: inline-block;
+  padding: 1.5em;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  /*A*/
+  /*B*/
+  /*C*/
+  /*D*/
+  /*E*/
+}
+.nutriscore li:nth-child(1) {
+  background: #387F46;
+  border-radius: 0.6em 0 0 0.6em;
+}
+.nutriscore li:nth-child(2) {
+  background: #92BA47;
+}
+.nutriscore li:nth-child(3) {
+  background: #F6CD46;
+}
+.nutriscore li:nth-child(4) {
+  background: #E08731;
+}
+.nutriscore li:nth-child(5) {
+  background: #D54A26;
+  border-radius: 0 0.6em 0.6em 0;
+}
+.nutriscore .currentScore {
+  position: relative;
+  margin: 0 -0.4em;
+  padding: 1em 1.5em;
+  border: 0.2em solid #FFFFFF;
+  border-radius: 0.8em;
+  color: #FFFFFF;
+}
+
 ul {
   list-style: none;
 }
@@ -93,8 +156,23 @@ ul a {
   color: inherit;
 }
 
-#blur {
-  filter: none;
+.btn {
+  width: 100%;
+  padding: 1em;
+  color: black;
+  border-radius: 1em;
+  font-weight: bold;
+  background-color: blue;
+  cursor: pointer;
+}
+.btn:focus-visible {
+  background-color: #1B649C;
+}
+.btn:hover {
+  background-color: #0dd8e6;
+}
+.btn:active {
+  background-color: #0d35e6;
 }
 
 .hidden {
@@ -123,7 +201,8 @@ main > section:not(#product-detail) img {
 }
 main > section:not(#product-detail)#shopping-list li, main > section:not(#product-detail)#products li {
   display: flex;
-  gap: 3em;
+  gap: 1.5em;
+  height: 7em;
   padding: 0.5em;
   margin-top: 1em;
   box-shadow: 1px 5px 12px 0px black;
@@ -133,19 +212,43 @@ main > section:not(#product-detail)#shopping-list li img, main > section:not(#pr
   width: 20%;
 }
 main > section:not(#product-detail)#shopping-list li aside, main > section:not(#product-detail)#products li aside {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1em;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0 0.5em;
+  grid-template-areas: "Name Name Name" "Koolhydr Sugar Salt";
 }
 main > section:not(#product-detail)#shopping-list li aside h3, main > section:not(#product-detail)#products li aside h3 {
+  grid-area: Name;
   text-align: left;
 }
 main > section:not(#product-detail)#shopping-list li aside p, main > section:not(#product-detail)#products li aside p {
-  text-align: right;
+  position: relative;
+  text-align: center;
+  line-height: 8em;
+}
+main > section:not(#product-detail)#shopping-list li aside p:first-of-type, main > section:not(#product-detail)#products li aside p:first-of-type {
+  grid-area: Koolhydr;
+}
+main > section:not(#product-detail)#shopping-list li aside p:nth-of-type(2), main > section:not(#product-detail)#products li aside p:nth-of-type(2) {
+  grid-area: Sugar;
+}
+main > section:not(#product-detail)#shopping-list li aside p:last-of-type, main > section:not(#product-detail)#products li aside p:last-of-type {
+  grid-area: Salt;
+}
+main > section:not(#product-detail)#shopping-list li aside p span, main > section:not(#product-detail)#products li aside p span {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 2em;
+  height: 2em;
+  border: 1px solid black;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 43px;
 }
 main #product-detail {
+  width: 100%;
   padding: 1em;
   scroll-margin-top: 100px;
   scroll-margin-bottom: 100px;
@@ -153,29 +256,36 @@ main #product-detail {
 }
 main #product-detail .heading div {
   display: flex;
+}
+main #product-detail .heading div:first-of-type {
   flex-wrap: wrap;
 }
-main #product-detail .heading div img {
+main #product-detail .heading div:first-of-type img {
   width: 100%;
   height: 10em;
+  margin-bottom: 2em;
+  object-fit: contain;
 }
-main #product-detail .heading button {
-  width: 100%;
-  padding: 1em;
-  color: white;
-  border-radius: 1em;
-  font-style: bold;
-  font-weight: bold;
-  background-color: blue;
+main #product-detail .heading div:last-of-type {
+  align-items: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+main #product-detail .heading div:last-of-type p {
+  font-size: 1.5em;
+}
+main #product-detail .heading .increase, main #product-detail .heading .decrease {
+  padding: 0;
+  font-size: 2em;
 }
 main #product-detail .heading h1 {
   margin-bottom: 1em;
   font-size: 1.5em;
 }
+main #product-detail h2 {
+  margin-bottom: 1em;
+}
 main #product-detail li {
-  display: flex;
-  gap: 3em;
-  padding: 0.5em;
   margin-top: 1em;
   border-bottom: 1px solid #333;
 }
