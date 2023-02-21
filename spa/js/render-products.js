@@ -1,16 +1,11 @@
-import {SetProduct} from './set-list.js';
 const listFrame = document.getElementById("list-frame");
-// const product = {
-//     img: document.querySelector(".heading img"),
-//     name: document.querySelector(".heading h1"),
-//     koolhydr: document.getElementById(".heading button"),
-//     sugar: document.getElementById("nutrition-score"),
-//     salt: document.getElementById("product-content")
-// }
 
 export function RenderListProduct(productInfo) {
 
-// const li = document.createElement("li")
+if (productInfo.nutriments.sugars == null) productInfo.nutriments.sugars = 0;
+if (productInfo.nutriments.salt == null) productInfo.nutriments.salt = 0;
+if (productInfo.nutriments.proteins == null) productInfo.nutriments.proteins = 0;
+
 const xmlString  =
     `<li> 
         <img src='${productInfo.image_url}' alt='${productInfo.product_name}'></img>
@@ -24,20 +19,8 @@ const xmlString  =
     </li> `;
 
 const listItem = new DOMParser().parseFromString(xmlString, "text/xml");
-// li.setAttributeNode(listItem)
-console.log(listItem)
 
 // Append to another element:
 document.getElementById("list-frame").appendChild(listItem.documentElement);
-
-
-    // console.log(productInfo);
-    // product.name.textContent = `${productInfo.product_name}`;
-    // product.img.setAttribute("src", `${productInfo.image_url}`);
-    // product.img.setAttribute("alt", `${productInfo.product_name}`);
-
-    // addButton.addEventListener("click",() => {
-    //   SetProduct(barcode)
-    // });
 }
 

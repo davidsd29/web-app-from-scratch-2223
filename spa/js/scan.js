@@ -27,7 +27,7 @@ export function StopScanning() {
         scanner.clear();
 
         // Removes reader element from DOM since no longer needed
-        document.getElementById("scanner").remove();
+        // document.getElementById("scanner").remove();
         stopScanningBtn.style.display = "none";
     })
     .catch((err) => {

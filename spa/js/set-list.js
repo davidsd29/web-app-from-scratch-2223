@@ -20,6 +20,7 @@ export function SetProduct(barcode) {
     if (counter != 0) {
         groceries.push(obj);
         CheckShoppingList(counter);
+        
     } else {
         count.counterIndex.classList.add("required");
         console.log("Please give an amount");
@@ -27,6 +28,7 @@ export function SetProduct(barcode) {
 }
 
 function CheckShoppingList(productAmount) {
+    counter = 0;
     shoppingCartAmount = shoppingCartAmount + productAmount;
 
     if ( shoppingCartAmount != 0){
