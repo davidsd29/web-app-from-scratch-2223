@@ -1,6 +1,6 @@
 const listFrame = document.getElementById("list-frame");
 
-export function RenderListProduct(productInfo) {
+function RenderListProduct(productInfo) {
 
 if (productInfo.nutriments.sugars == null) productInfo.nutriments.sugars = 0;
 if (productInfo.nutriments.salt == null) productInfo.nutriments.salt = 0;
@@ -21,6 +21,7 @@ const xmlString  =
 const listItem = new DOMParser().parseFromString(xmlString, "text/xml");
 
 // Append to another element:
-document.getElementById("list-frame").appendChild(listItem.documentElement);
+listFrame.appendChild(listItem.documentElement);
 }
 
+export { RenderListProduct };

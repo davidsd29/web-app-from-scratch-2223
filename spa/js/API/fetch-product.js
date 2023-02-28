@@ -1,7 +1,7 @@
 import {RenderProduct} from '../render-details.js';
 import {RenderListProduct} from '../render-products.js';
 
-export function GetData(barcode) {
+function GetProductData(barcode) {
     fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
     .then((response) => response.json())
     .then(( data => {
@@ -9,8 +9,18 @@ export function GetData(barcode) {
     }));
 }
 
-export function GetListData(productList) {
-    productList.forEach(item => {
+function GetSelectedProductData(barcode) {
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
+    .then((response) => response.json())
+    .then(( data => {
+        RenderProduct(data.product, barcode);
+    }));
+}
+
+function GetGroceriesListData() {
+    const groceriesList = JSON.parse(localStorage.getItem("groceries") || "[]");
+
+    groceriesList.forEach(item => {
         console.log(item.productCode);
 
         fetch(`https://world.openfoodfacts.org/api/v0/product/${item.productCode}.json`)
@@ -21,3 +31,5 @@ export function GetListData(productList) {
         }));
     });
 }
+
+export { GetProductData, GetGroceriesListData, GetSelectedProductData };

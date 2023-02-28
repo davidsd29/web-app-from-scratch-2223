@@ -1,39 +1,46 @@
 import {GetRouter} from './router.js';
-import {StartScan} from './scan.js';
-import {StopScanning} from './scan.js';
-import {groceries} from './set-list.js';
-import {GetListData} from './API/fetch-product.js';
+import {StartCameraScan} from './barcode-handler.js';
+import {StopCameraScan} from './barcode-handler.js';
+import {GetFileBarcode} from './barcode-handler.js';
+import {GetGroceriesListData} from './API/fetch-product.js';
 
+const listBtn = document.querySelector("footer li:last-of-type a");
+const fileinput = document.getElementById("qr-input-file");
+const editBtn = document.getElementById("edit-product")
 
+const scan = {
+    start: document.getElementById("start-camera-scan"),
+    stop: document.getElementById("stop-camera-scan"),
+} 
 
-window.addEventListener("DOMContentLoaded", () => {
-const listBtn = document.querySelector("footer li:last-of-type a")
+editBtn.addEventListener("click", () => {
+    const hash = window.location.hash; // Get the hash from the URL
+    const linkParts = hash.split('/'); // Split the hash into an array of parts
 
-    const scan = {
-        start: document.getElementById("start-camera-scan"),
-        stop: document.getElementById("stop-camera-scan"),
-    } 
-
-    scan.stop.addEventListener("click", () => {
-        StopScanning()
-        scan.stop.style.display = "none";
-    });
-
-    scan.start.addEventListener("click", () => {
-        // Set delay on appearance of stopscan button
-        setTimeout(function() {scan.stop.style.display = "block";}, 1400);
-        StartScan();
-        
-    }); 
-
-    listBtn.addEventListener("click", () => {
-        GetListData(groceries);
-    });
-
-    window.onload = GetRouter(); 
-    window.addEventListener('hashchange', () => {
-        GetRouter();
-    }, false);
-
-    console.log("DOM fully loaded and parsed");
+    if (linkParts.length > 1) {
+        const barcode = linkParts[1]; // Get the ID from the hash
+        window.location.hash = `#edit-product/${barcode}`;
+    }
 });
+
+scan.stop.addEventListener("click", () => {
+    StopCameraScan()
+    scan.stop.style.display = "none";
+});
+
+scan.start.addEventListener("click", () => {
+    // Set delay on appearance of stopscan button
+    setTimeout(function() {scan.stop.style.display = "block";}, 1400);
+    StartCameraScan();
+}); 
+
+fileinput.addEventListener('change', e => { GetFileBarcode(e); });
+
+listBtn.addEventListener("click", () => {
+    GetGroceriesListData();
+});
+
+window.onload = GetRouter(); 
+window.addEventListener('hashchange', () => {
+    GetRouter();
+}, false);

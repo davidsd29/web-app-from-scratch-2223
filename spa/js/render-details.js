@@ -1,4 +1,5 @@
 import {SetProduct} from './set-list.js';
+import {form} from './variable.js';
 
 const product = {
     img: document.querySelector(".heading img"),
@@ -20,7 +21,7 @@ const nutrition = {
 const addButton = document.querySelector(".heading button");
 
 // Render prodcut and updating the UI
-export function RenderProduct(productInfo, barcode) {
+function RenderProduct(productInfo, barcode) {
     // detailPage.classList.remove("hidden");
     console.log(productInfo);
     product.name.textContent = `${productInfo.product_name}`;
@@ -44,3 +45,14 @@ export function RenderProduct(productInfo, barcode) {
       SetProduct(barcode)
     });
 }
+
+function EditProduct(product) {
+    form.name.value = product.product_name;
+
+    form.savedImg = product.image_url;
+    form.sugar.value = product.nutriments.sugar;
+    form.salt.value = product.nutriments.salt;
+    form.nutrition.value = product.nutrition_grades;
+}
+
+export { RenderProduct, EditProduct };

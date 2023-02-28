@@ -82,6 +82,30 @@ footer ul li span {
   box-shadow: 0px 1px 10px 1px red;
 }
 
+form {
+  display: grid;
+  text-align: left;
+}
+form fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+}
+form input,
+form select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form input[type=submit] {
+  margin: 8px 0;
+  border: none;
+}
+
 .go-card, .reclame, main > section {
   margin-bottom: 1em;
 }
@@ -162,7 +186,7 @@ ul a {
   color: black;
   border-radius: 1em;
   font-weight: bold;
-  background-color: blue;
+  background-color: skyblue;
   cursor: pointer;
 }
 .btn:focus-visible {
