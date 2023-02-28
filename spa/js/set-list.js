@@ -1,4 +1,5 @@
-export const groceries = [];
+import {SaveProduct} from './localstorage.js';
+
 let counter = 0;
 let shoppingCartAmount = 0;
 
@@ -13,13 +14,20 @@ count.counterIndex.textContent = counter;
 
 
 export function SetProduct(barcode) {
+
     const obj = { 
         productCode: barcode,
         productAmount: counter 
     };
+
     if (counter != 0) {
-        groceries.push(obj);
+        SaveProduct(obj);
         CheckShoppingList(counter);
+
+        counter = 0;
+
+        // Saving
+        localStorage.setItem("groceries", JSON.stringify(groceries));
         
     } else {
         count.counterIndex.classList.add("required");
@@ -28,14 +36,12 @@ export function SetProduct(barcode) {
 }
 
 function CheckShoppingList(productAmount) {
-    counter = 0;
     shoppingCartAmount = shoppingCartAmount + productAmount;
 
     if ( shoppingCartAmount != 0){
         count.shoppingListIndex.style.display = "block";
         count.shoppingListIndex.textContent = shoppingCartAmount;
     }
-
 }
 
 count.increaseBtn.addEventListener("click", () => {
