@@ -1,7 +1,8 @@
 import {RenderProduct} from '../render-details.js';
 import {EditProduct} from '../render-details.js';
 import {RenderListProduct} from '../render-products.js';
-let groceriesListItemcount;
+import {filter} from '../variable.js';
+
 
 function GetProductData(barcode) {
     fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
@@ -22,7 +23,7 @@ function GetSelectedProductData(barcode) {
 function GetGroceriesListData() {
     const groceriesList = JSON.parse(localStorage.getItem("groceries") || "[]");
     console.log(groceriesList.length)
-    
+    filter.value.textContent = groceriesList.length + " items";
 
     groceriesList.forEach(item => {
         console.log(item.productCode);
@@ -30,13 +31,14 @@ function GetGroceriesListData() {
         fetch(`https://world.openfoodfacts.org/api/v0/product/${item.productCode}.json`)
         .then((response) => response.json())
         .then(( data => {
+            
             // if(groceriesListItemcount != groceriesList.length ){
                 RenderListProduct(data.product);
             // }    
         }));
     });
 
-groceriesListItemcount = groceriesList.length;
+// groceriesListItemcount = groceriesList.length;
 }
 
 // GetGroceriesListData();

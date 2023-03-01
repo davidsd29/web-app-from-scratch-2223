@@ -8,4 +8,9 @@ const form = {
   submit: document.getElementById("edit-submit")
 };
 
-export{ form }
+const filter = {
+    value: document.getElementById("filter-awnser"),
+    title: document.querySelector("#shopping-list h3"),
+}
+
+export{ form, filter }

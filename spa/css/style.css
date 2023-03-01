@@ -50,7 +50,7 @@ header .fa {
   transition: all 0.3s ease-in;
   z-index: 100;
 }
-#shopping-list > aside:has(input:checked) {
+#shopping-list > aside:has(input[name=open-filter]:checked) {
   transform: translateX(calc(100vw - 14em));
 }
 #shopping-list > aside > label {
@@ -80,6 +80,9 @@ header .fa {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   border-right: 3px solid #2E9BD8;
+}
+#shopping-list h3:first-letter {
+  text-transform: uppercase;
 }
 
 footer {

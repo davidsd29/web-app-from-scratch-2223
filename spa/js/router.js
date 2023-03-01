@@ -1,6 +1,7 @@
 import {GetProductData} from './API/fetch-product.js';
 import {GetSelectedProductData} from './API/fetch-product.js';
 import {GetGroceriesListData} from './API/fetch-product.js';
+import {FilterProduct} from './filter-products.js';
 
 
 const title = {
@@ -42,6 +43,7 @@ function GetRouter() {
 
              if (linkParts.length > 1) {
                 const filterLink = linkParts[1]; // Get the filter from the hash
+                FilterProduct(filterLink);  
                 console.log(filterLink);
              }
         break;        

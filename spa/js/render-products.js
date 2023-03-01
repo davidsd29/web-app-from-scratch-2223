@@ -1,6 +1,14 @@
 const listFrame = document.getElementById("list-frame");
+let totalSugars,
+    totalSalt,
+    totalProteins,
+    totalKoolhydr;
 
 function RenderListProduct(productInfo) {
+    totalSugars = totalSugars + productInfo.nutriments.sugars;
+    totalSalt = totalSalt + productInfo.nutriments.salt;
+    totalProteins = totalProteins + productInfo.nutriments.proteins;
+    // totalKoolhydr = totalKoolhydr + productInfo.nutriments.sugars;
 
 if (productInfo.nutriments.sugars == null) productInfo.nutriments.sugars = 0;
 if (productInfo.nutriments.salt == null) productInfo.nutriments.salt = 0;
@@ -17,7 +25,6 @@ const xmlString  =
                 <p><span id='salt'>${productInfo.nutriments.salt}</span>Salt</p>
             </div>
         </aside>
-        
     </li> `;
 
 const listItem = new DOMParser().parseFromString(xmlString, "text/xml");
@@ -26,4 +33,10 @@ const listItem = new DOMParser().parseFromString(xmlString, "text/xml");
 listFrame.appendChild(listItem.documentElement);
 }
 
-export { RenderListProduct };
+export { 
+    RenderListProduct, 
+    totalSugars,
+    totalSalt,
+    totalProteins,
+    totalKoolhydr 
+}

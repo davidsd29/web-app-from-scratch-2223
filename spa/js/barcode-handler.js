@@ -10,6 +10,7 @@ function StartCameraScan () {
         StopCameraScan();
         window.location.hash = `#product/${barcode}`;
         GetRouter();
+        console.log("lalal");
     };
 
     scanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback).catch((err) => {
