@@ -26,11 +26,12 @@
             </li>
         </ul>
     </header>
+
     <main>
         <button id="stop-camera-scan"></button>
         <div id="scanner"></div>
-        <!-- <section id="home"> -->
-        <section id="home" class="hidden">
+        <section id="home">
+        <!-- <section id="home" class="hidden"> -->
            
             <h1></h1>
             <div id="reader" width="600px" height="600px"></div>
@@ -60,13 +61,15 @@
       <section id="product-detail" class="hidden">
         
         <section class="heading">
-            <button id="edit-product"></button>
+            <button id="edit-product-btn">
+                <i class="fa fa-pencil"></i>
+            </button>
             <div>
                 <img src="" alt="">
                 <h1></h1> 
             </div>
 
-            <button class="btn add-item">Add to list</button>
+            <button class="btn" id="add-item">Add to list</button>
 
             <div>
                 <button class="btn decrease ">-</button>
@@ -119,26 +122,26 @@
 
         </section> 
         
-        <section id="edit-product">
-        <!-- <section id="edit-product" class="hidden"> -->
-            <form action="">
+        <!-- <section id="edit-product"> -->
+        <section id="edit-product" class="hidden">
+            <form action="" id="edit-product-form">
                 <label for="product-img">Product Image</label>
-                <img src="img/Happy-Emoji-PNG.png" alt="Product image" id="saved-product-img">
+                <img src="" alt="Product image" id="saved-product-img">
                 <input type="file" id="product-img" name="product-img">  
                 
                 <label for="name">Product Name</label>
-                <input type="text" id="name" name="product-name">
+                <input type="text" id="product-name" name="product-name">
                 
                 <fieldset>
                     <label for="sugar">Sugar</label>
-                    <input type="number" id="sugar" name="sugar">   
+                    <input type="number" id="product-sugar" name="sugar">   
                     
                     <label for="salt">Salt</label>
-                    <input type="number" id="salt" name="salt">
+                    <input type="number" id="product-salt" name="salt">
                 </fieldset>
                 
                 <label for="nutrition">Nutrition score</label>
-                <select id="nutrition" name="nutrition">
+                <select id="product-nutrition" name="nutrition">
                     <option value="a">A</option>
                     <option value="b">B</option>
                     <option value="c">C</option>
@@ -146,7 +149,7 @@
                     <option value="e">E</option>
                 </select>
 
-                <input type="submit" value="Submit Changes" class="btn">
+                <input type="submit" id="edit-submit" value="Submit Changes" class="btn">
             </form>
 
         </section>
@@ -182,6 +185,41 @@
         
         <section id="shopping-list" class="hidden">
         <!-- <section id="shopping-list"> -->
+
+            <aside>
+                <label>
+                    <input type="checkbox" name="open-filter">
+                    <p>Filter</p>
+                    
+                </label>
+                <!-- <div>
+                </div> -->
+                <div id="filters">
+                        <h2>Filter to your liking</h2>
+
+                        <fieldset>
+                            <input type="radio" name="filter" id="filter-sugar" value="sugar">
+                            <label for="filter-sugar"> Sugar</label>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <input type="radio" name="filter" id="filter-salt" value="salt">
+                            <label for="filter-salt"> Salt</label>
+                        </fieldset>
+
+                        <fieldset>
+                            <input type="radio" name="filter" id="filter-koolhydr" value="koolhydr">
+                            <label for="filter-koolhydr"> koolhydr</label>
+                        </fieldset>
+
+                        <fieldset>
+                            <input type="radio" name="filter" id="filter-proteine" value="proteine">
+                            <label for="filter-proteine"> proteine</label>
+                        </fieldset>
+
+                        <input type="submit" id="filter-submit" class="btn" value="Apply">
+                </div>
+            </aside>
             <h1></h1>
             <ul id="list-frame">
                 <!-- <li>
@@ -195,6 +233,11 @@
                     </aside>
                 </li> -->
             </ul>
+
+            <div>
+                <h3>Poducts</h3>
+                <p>Total: <span id="filter-awnser"> 5 items</span></p>
+            </div>
         </section>
     </main>
 

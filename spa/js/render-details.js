@@ -18,7 +18,7 @@ const nutrition = {
   e: document.getElementById("nutriscore-E"),
 }
 
-const addButton = document.querySelector(".heading button");
+const addButton = document.getElementById("add-item");
 
 // Render prodcut and updating the UI
 function RenderProduct(productInfo, barcode) {
@@ -46,11 +46,14 @@ function RenderProduct(productInfo, barcode) {
     });
 }
 
-function EditProduct(product) {
+function EditProduct(product, barcode) {
+
+    console.log(product.product_name);
+    // form.name.setAttribute("value", `${product.product_name}`);
     form.name.value = product.product_name;
 
-    form.savedImg = product.image_url;
-    form.sugar.value = product.nutriments.sugar;
+    form.savedImg.setAttribute("src", `${product.image_url}`);
+    form.sugar.value = product.nutriments.sugars;
     form.salt.value = product.nutriments.salt;
     form.nutrition.value = product.nutrition_grades;
 }

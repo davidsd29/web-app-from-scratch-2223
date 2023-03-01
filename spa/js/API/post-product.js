@@ -1,14 +1,15 @@
 import {form} from '../variable.js';
 
 function PostProductData(barcode) {
-
   const productData = {
     name: form.name.value,
-    img: form.img,
+    // img: form.img,
     sugar: form.sugar.value,
     salt: form.salt.value,
     nutrition: form.nutrition.value
   };
+
+  console.log(productData);
 
     try {
         fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`, {
@@ -27,3 +28,5 @@ function PostProductData(barcode) {
         console.log("Het werkt niet gap kijk hier:" + error)
     } 
 }
+
+export { PostProductData }

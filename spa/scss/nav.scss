@@ -31,6 +31,57 @@ header {
     }
 }
 
+#shopping-list >aside {
+    position: fixed;
+    top: 20%;
+    left: auto;
+    right: 0;
+    bottom: auto;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 37.5em;
+    transform: translateX(calc(100vw - 2.5em));
+    transition: all 0.3s ease-in;
+    z-index: 100;
+    
+    &:has(input:checked) {
+        transform: translateX(calc(100vw - 14em));
+    }
+
+    > label {
+        display: block;
+        width: 2em;
+        padding: 0.6em 1em;
+        cursor: pointer;
+        color: color(quaternary);
+        background: color(detail);
+        border-radius: 1em 0 0 1em;
+
+        p {
+            margin-top: 5em;
+            font-size: 1em;
+            transform: rotate(-90deg);
+            text-transform: uppercase;
+            overflow-wrap: normal;
+            }
+
+        input {
+            position: absolute;
+            left: 9999em;
+        }
+    }
+
+    div {
+        background-color: color(quaternary);
+        padding: 25px;
+        color: color(detail);
+        border-top: 1px solid color(highlight);
+        border-bottom: 1px solid color(highlight);
+        border-right: 3px solid color(detail);
+    }
+}
+
 footer {
     position: fixed;
     left: 0;
@@ -75,8 +126,8 @@ footer {
                 height: 1.2em;
                 border-radius: 50%;
                 color: color(quaternary);
-                background-color: color(highlight);
-                box-shadow: 0px 1px 10px 1px color(highlight);
+                background-color: color(indicator);
+                box-shadow: 0px 1px 10px 1px color(indicator);
             }
         }
     }

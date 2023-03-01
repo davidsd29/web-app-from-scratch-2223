@@ -36,6 +36,52 @@ header .fa {
   font-size: 2em;
 }
 
+#shopping-list > aside {
+  position: fixed;
+  top: 20%;
+  left: auto;
+  right: 0;
+  bottom: auto;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 37.5em;
+  transform: translateX(calc(100vw - 2.5em));
+  transition: all 0.3s ease-in;
+  z-index: 100;
+}
+#shopping-list > aside:has(input:checked) {
+  transform: translateX(calc(100vw - 14em));
+}
+#shopping-list > aside > label {
+  display: block;
+  width: 2em;
+  padding: 0.6em 1em;
+  cursor: pointer;
+  color: #FFFFFF;
+  background: #2E9BD8;
+  border-radius: 1em 0 0 1em;
+}
+#shopping-list > aside > label p {
+  margin-top: 5em;
+  font-size: 1em;
+  transform: rotate(-90deg);
+  text-transform: uppercase;
+  overflow-wrap: normal;
+}
+#shopping-list > aside > label input {
+  position: absolute;
+  left: 9999em;
+}
+#shopping-list > aside div {
+  background-color: #FFFFFF;
+  padding: 25px;
+  color: #2E9BD8;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 3px solid #2E9BD8;
+}
+
 footer {
   position: fixed;
   left: 0;
@@ -82,17 +128,21 @@ footer ul li span {
   box-shadow: 0px 1px 10px 1px red;
 }
 
-form {
-  display: grid;
-  text-align: left;
-}
 form fieldset {
   display: flex;
   flex-wrap: wrap;
   border: none;
 }
-form input,
-form select {
+form#edit-product-form {
+  display: grid;
+  text-align: left;
+}
+form#edit-product-form img {
+  height: 9em;
+  object-fit: contain;
+}
+form#edit-product-form input,
+form#edit-product-form select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -101,9 +151,18 @@ form select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-form input[type=submit] {
+form#edit-product-form input[type=submit] {
   margin: 8px 0;
-  border: none;
+}
+form#filter-form h2 {
+  margin-bottom: 1em;
+  font-size: 1em;
+}
+form#filter-form input[type=radio] {
+  margin-right: 1em;
+}
+form#filter-form input[type=submit] {
+  margin-top: 2em;
 }
 
 .go-card, .reclame, main > section {
@@ -185,6 +244,7 @@ ul a {
   padding: 1em;
   color: black;
   border-radius: 1em;
+  border: none;
   font-weight: bold;
   background-color: skyblue;
   cursor: pointer;
@@ -226,41 +286,47 @@ main > section:not(#product-detail) img {
 main > section:not(#product-detail)#shopping-list li, main > section:not(#product-detail)#products li {
   display: flex;
   gap: 1.5em;
-  height: 7em;
+  height: auto;
   padding: 0.5em;
   margin-top: 1em;
   box-shadow: 1px 5px 12px 0px black;
   border-bottom: 1px solid #ccc;
 }
 main > section:not(#product-detail)#shopping-list li img, main > section:not(#product-detail)#products li img {
-  width: 20%;
-}
-main > section:not(#product-detail)#shopping-list li aside, main > section:not(#product-detail)#products li aside {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0 0.5em;
-  grid-template-areas: "Name Name Name" "Koolhydr Sugar Salt";
+  width: 50%;
 }
 main > section:not(#product-detail)#shopping-list li aside h3, main > section:not(#product-detail)#products li aside h3 {
   grid-area: Name;
   text-align: left;
 }
-main > section:not(#product-detail)#shopping-list li aside p, main > section:not(#product-detail)#products li aside p {
+main > section:not(#product-detail)#shopping-list li aside div, main > section:not(#product-detail)#products li aside div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2em;
+}
+main > section:not(#product-detail)#shopping-list li aside div p, main > section:not(#product-detail)#products li aside div p {
   position: relative;
   text-align: center;
   line-height: 8em;
+  height: 5em;
 }
-main > section:not(#product-detail)#shopping-list li aside p:first-of-type, main > section:not(#product-detail)#products li aside p:first-of-type {
+main > section:not(#product-detail)#shopping-list li aside div p:first-of-type, main > section:not(#product-detail)#products li aside div p:first-of-type {
   grid-area: Koolhydr;
 }
-main > section:not(#product-detail)#shopping-list li aside p:nth-of-type(2), main > section:not(#product-detail)#products li aside p:nth-of-type(2) {
+main > section:not(#product-detail)#shopping-list li aside div p:nth-of-type(2), main > section:not(#product-detail)#products li aside div p:nth-of-type(2) {
   grid-area: Sugar;
 }
-main > section:not(#product-detail)#shopping-list li aside p:last-of-type, main > section:not(#product-detail)#products li aside p:last-of-type {
+main > section:not(#product-detail)#shopping-list li aside div p:last-of-type, main > section:not(#product-detail)#products li aside div p:last-of-type {
   grid-area: Salt;
 }
-main > section:not(#product-detail)#shopping-list li aside p span, main > section:not(#product-detail)#products li aside p span {
+@media screen and (max-width: 767px) {
+  main > section:not(#product-detail)#shopping-list li aside div p, main > section:not(#product-detail)#products li aside div p {
+    width: 100%;
+  }
+}
+main > section:not(#product-detail)#shopping-list li aside div p span, main > section:not(#product-detail)#products li aside div p span {
   position: absolute;
   top: 25%;
   left: 50%;
@@ -271,12 +337,24 @@ main > section:not(#product-detail)#shopping-list li aside p span, main > sectio
   transform: translate(-50%, -50%);
   line-height: 43px;
 }
+main > section:not(#product-detail)#shopping-list > div, main > section:not(#product-detail)#products > div {
+  margin-top: 2em;
+  text-align: left;
+}
+main > section:not(#product-detail)#shopping-list > div h3, main > section:not(#product-detail)#products > div h3 {
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
 main #product-detail {
   width: 100%;
   padding: 1em;
   scroll-margin-top: 100px;
   scroll-margin-bottom: 100px;
   transition: 1s;
+}
+main #product-detail .heading #edit-product-btn {
+  width: 3em;
 }
 main #product-detail .heading div {
   display: flex;

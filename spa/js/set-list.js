@@ -13,7 +13,7 @@ const count = {
 count.counterIndex.textContent = counter;
 
 
-export function SetProduct(barcode) {
+function SetProduct(barcode) {
 
     const obj = { 
         productCode: barcode,
@@ -25,9 +25,6 @@ export function SetProduct(barcode) {
         CheckShoppingList(counter);
 
         counter = 0;
-
-        // Saving
-        localStorage.setItem("groceries", JSON.stringify(groceries));
         
     } else {
         count.counterIndex.classList.add("required");
@@ -43,6 +40,7 @@ function CheckShoppingList(productAmount) {
         count.shoppingListIndex.textContent = shoppingCartAmount;
     }
 }
+export { SetProduct }
 
 count.increaseBtn.addEventListener("click", () => {
     if (count.counterIndex.classList.contains("required")) count.counterIndex.classList.remove("required");

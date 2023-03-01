@@ -1,26 +1,50 @@
 form {
-    display: grid;
-    text-align: left;
-
     fieldset {
         display: flex;
         flex-wrap: wrap;
         border: none;
     }
-    
-    input,
-    select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
 
-    input[type=submit] {
-        margin: 8px 0;
-        border: none;
+    &#edit-product-form {
+        display: grid;
+        text-align: left;
+        
+        img {
+            height: 9em;
+            object-fit: contain;
+        }
+    
+    
+    
+        input,
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    
+        input[type=submit] {
+            margin: 8px 0;
+        }
+    }  
+    
+    &#filter-form {
+        h2 {
+            margin-bottom: 1em;
+            font-size: 1em;
+        }
+
+        input[type="radio"] {
+            margin-right: 1em;
+        }
+        
+        input[type="submit"] {
+            margin-top: 2em;
+        }
+
     }
 }

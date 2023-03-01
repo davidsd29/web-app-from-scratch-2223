@@ -11,9 +11,11 @@ const xmlString  =
         <img src='${productInfo.image_url}' alt='${productInfo.product_name}'></img>
         <aside>
             <h3>${productInfo.product_name}</h3>
-            <p><span id='koolhydr'>${productInfo.nutriments.proteins}</span>Koolhydr</p>
-            <p><span id='sugar'>${productInfo.nutriments.sugars}</span>Sugar</p>
-            <p><span id='salt'>${productInfo.nutriments.salt}</span>Salt</p>
+            <div>
+                <p><span id='koolhydr'>${productInfo.nutriments.proteins}</span>Koolhydr</p>
+                <p><span id='sugar'>${productInfo.nutriments.sugars}</span>Sugar</p>
+                <p><span id='salt'>${productInfo.nutriments.salt}</span>Salt</p>
+            </div>
         </aside>
         
     </li> `;
