@@ -1,9 +1,4 @@
 form {
-    fieldset {
-        display: flex;
-        flex-wrap: wrap;
-        border: none;
-    }
 
     &#edit-product-form {
         display: grid;
@@ -31,20 +26,25 @@ form {
             margin: 8px 0;
         }
     }  
-    
-    &#filter-form {
-        h2 {
-            margin-bottom: 1em;
-            font-size: 1em;
-        }
+}
 
-        input[type="radio"] {
-            margin-right: 1em;
-        }
-        
-        input[type="submit"] {
-            margin-top: 2em;
-        }
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+}
 
+#filters {
+    h2 {
+        margin-bottom: 1em;
+        font-size: 1em;
+    }
+
+    input[type="radio"] {
+        margin-right: 1em;
+    }
+
+    input[type="submit"] {
+        margin-top: 2em;
     }
 }

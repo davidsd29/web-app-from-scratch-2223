@@ -6,7 +6,7 @@
         <link href="css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>Goodie-Foodie</title>
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
             </li>
             <li>
 
-                <h1>Check-Tech</h1>
+                <h1>Goodie-Foodie</h1>
             </li>
             <li>
                 <i class="fa fa-user"></i>
@@ -28,19 +28,47 @@
     </header>
 
     <main>
-        <button id="stop-camera-scan"></button>
-        <div id="scanner"></div>
+
+        <div id="error-pop-up" class="pop-up">
+            <span class="close">close</span>
+            <h1>Sorry...</h1>
+            <p id="error-text"></p>
+            <img src="img/whoops.png" alt="Car">
+        </div>
+
+        <div id="complete-pop-up" class="pop-up">
+            <p>Item is succesfully opgelsagen</p>
+            <img src="img/check-mark.png" alt="A Check image">
+        </div>
+
+        
+        <section id="camera" class="hidden">
+            <button id="stop-camera-scan" ></button>
+            <div id="scanner"></div>
+        </section>
+
         <section id="home">
         <!-- <section id="home" class="hidden"> -->
            
             <h1></h1>
-            <div id="reader" width="600px" height="600px"></div>
+            <div id="reader" width="200px" height="200px"></div>
             <input type="file" id="qr-input-file" accept="image/*" capture>
-            <div class="go-card"></div>
-            <div class="go-card"></div>
-            <div class="go-card"></div>
-            <div class="go-card"></div>
-            <div class="go-card"></div>
+            <div class="go-cards">
+                <div></div>
+                <div></div>
+                <div></div>
+                
+                <div></div>
+
+                <div>
+                    <aside>
+                        <h4>Watching a movie in the evening?</h4>
+                        <p>Find something tasty but also healthy!</p>
+                    </aside>
+                    <img src="img/popcorn.png" alt="Popcorn bag">
+                </div>
+            </div>
+
     
             <div class="reclame">
                 <h3></h3>
@@ -153,6 +181,28 @@
             </form>
 
         </section>
+
+        <section id="shopping-card" >
+            <h2>Your Shopping card</h2>
+            <section>
+                <div>
+                    <p>Link your (digital) Shopping card</p>
+                    <img src="img/card.png" alt="The app shopping card">
+                </div>
+                <div>
+                    <a href="#shopping-card" class="btn">Link Shopping card</a>
+                    <button class="btn">Not now</button>
+                </div>
+            </section>
+
+            <section class="hidden">
+                <div>
+                    <img src="img/7893894894.png" id="card-code" alt=" Shopping card barcode">
+                </div>
+                <p>Keep your body fit, and your hart too!</p>
+                <img src="img/healthy.png" alt="Health hart image">
+            </section>
+        </section>
         
         <section id="products" class="hidden">
             <h1></h1>
@@ -221,7 +271,12 @@
                 </div>
             </aside>
             <h1></h1>
+
             <ul id="list-frame">
+                <li id="empty-list">
+                    <p>Your list is empty, please scan some products to fill it up</p>
+                    <img src="img/sad-angry.png" alt="A sad-angry face">
+                </li>
                 <!-- <li>
                     <img src="img/Happy-Emoji-PNG.png" alt="">
                     <aside>
@@ -250,8 +305,8 @@
                 </li>
 
                 <li>
-                    <a href="#recipe"><i class="fa fa-cutlery"></i></a>
-                    <p>Recept</p>
+                    <a href="#shopping-card"><i class="fa fa-id-card"></i></a>
+                    <p>Shopping Card</p>
                 </li>
 
                 <li>

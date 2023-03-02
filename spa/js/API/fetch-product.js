@@ -3,6 +3,7 @@ import {EditProduct} from '../render-details.js';
 import {RenderListProduct} from '../render-products.js';
 import {filter} from '../variable.js';
 
+const listFeedback = document.getElementById("empty-list");
 
 function GetProductData(barcode) {
     fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
@@ -22,7 +23,11 @@ function GetSelectedProductData(barcode) {
 
 function GetGroceriesListData() {
     const groceriesList = JSON.parse(localStorage.getItem("groceries") || "[]");
-    console.log(groceriesList.length)
+
+    if (groceriesList.length === 0) {
+        listFeedback.style.display = "block";
+    } else listFeedback.style.display = "none"; 
+
     filter.value.textContent = groceriesList.length + " items";
 
     groceriesList.forEach(item => {

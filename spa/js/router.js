@@ -1,7 +1,8 @@
-import {GetProductData} from './API/fetch-product.js';
-import {GetSelectedProductData} from './API/fetch-product.js';
-import {GetGroceriesListData} from './API/fetch-product.js';
+import {GetProductData, GetSelectedProductData, GetGroceriesListData} from './API/fetch-product.js';
 import {FilterProduct} from './filter-products.js';
+import {ScanCardBarcode} from './barcode-handler.js';
+import {CreateBarcodeImage} from './API/create-card.js';
+import {shopping} from './variable.js';
 
 
 const title = {
@@ -12,10 +13,20 @@ const title = {
 
 const pages = {
     home: document.getElementById("home"),
+    card: document.getElementById("shopping-card"),
     shoppingList: document.getElementById("shopping-list"),
     productList: document.getElementById("products"),
     detail: document.getElementById("product-detail"),
     edit: document.getElementById("edit-product"),
+}
+function CheckCardExist() {
+    const shoppingCardBarcode = JSON.parse(localStorage.getItem("shoppingCard") || "[]");
+        if (shoppingCardBarcode.length == 0) {
+            shopping.card.classList.add("hidden");
+        } else {
+            shopping.card.classList.remove("hidden");
+            shopping.invite.classList.add("hidden");
+        }
 }
 
 function GetRouter() {
@@ -23,12 +34,16 @@ function GetRouter() {
     const linkParts = hash.split('/'); // Split the hash into an array of parts
     switch (linkParts[0]) { // Check which part of the hash we're dealing with
         case "#home":
+            CheckCardExist();
+        
             title.home.textContent = "Welcome Jhon Doe";
             if (pages.home.classList.contains("hidden")) pages.home.classList.remove("hidden");
             if (!pages.edit.classList.contains("hidden")) pages.edit.classList.add("hidden");
             if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
-            if (!pages.shoppingList.classList.contains("hidden")) pages.home.classList.add("hidden");
-            if (!pages.productList.classList.contains("hidden")) pages.home.classList.add("hidden");
+            if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
+            if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
+            if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
+
 
         break; 
 
@@ -39,6 +54,8 @@ function GetRouter() {
             if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
             if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
             if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
+            if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
+
             GetGroceriesListData();
 
              if (linkParts.length > 1) {
@@ -55,6 +72,8 @@ function GetRouter() {
             if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
             if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
             if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
+            if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
+
         break;   
         
         case "#product":
@@ -68,7 +87,29 @@ function GetRouter() {
                 if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
                 if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
                 if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
+                if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
+
             }
+        break;         
+        
+        case "#shopping-card":
+            // let number = 2622213062385;
+            if (linkParts.length > 1) {
+                const barcode = linkParts[1]; // Get the ID from the hash
+                CreateBarcodeImage(barcode);
+            } else {
+                ScanCardBarcode();
+            }
+
+            CheckCardExist();
+            title.productList.textContent = "Resent scaned products";
+            if (pages.card.classList.contains("hidden")) pages.card.classList.remove("hidden");
+            if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
+            if (!pages.edit.classList.contains("hidden")) pages.edit.classList.add("hidden");
+            if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
+            if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
+            if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
+            
         break;  
         
         case "#edit-product":
@@ -82,6 +123,7 @@ function GetRouter() {
                 if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
                 if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
                 if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
+                 if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
             }
         break;        
         

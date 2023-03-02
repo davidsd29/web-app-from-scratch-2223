@@ -1,21 +1,21 @@
 import {GetRouter} from './router.js';
-import {StartCameraScan} from './barcode-handler.js';
-import {StopCameraScan} from './barcode-handler.js';
-import {GetFileBarcode} from './barcode-handler.js';
+import {ScanProductBarcode , StopCameraScan, GetFileBarcode} from './barcode-handler.js';
+import {scan, shopping} from './variable.js';
 import {PostProductData} from './API/post-product.js';
 
 const fileinput = document.getElementById("qr-input-file");
-const editBtn = document.getElementById("edit-product-btn")
+const editBtn = document.getElementById("edit-product-btn");
+
+
+const popUp = {
+    frame: document.getElementById("error-pop-up"),
+    closeBtn: document.querySelector(".close")
+}
 
 const form = {
     edit: document.getElementById("edit-product-form"),
     filter: document.getElementById("filters"),
 }
-
-const scan = {
-    start: document.getElementById("start-camera-scan"),
-    stop: document.getElementById("stop-camera-scan"),
-} 
 
 function GetCodeFromUrl() {
     const hash = window.location.hash; // Get the hash from the URL
@@ -38,21 +38,23 @@ form.edit.addEventListener("sumbit", (e) => {
     PostProductData(barcode);
 });
 
+popUp.closeBtn.addEventListener("click", () => {
+    popUp.frame.classList.remove("open");
+});
+
 editBtn.addEventListener("click", () => {
     const barcode = GetCodeFromUrl();
     window.location.hash = `#edit-product/${barcode}`;   
 });
 
-scan.stop.addEventListener("click", () => {
-    StopCameraScan()
-    scan.stop.style.display = "none";
+shopping.button.addEventListener("click", () => {
+    if (window.location.hash === "#shopping-card") {
+        window.location.hash = "#home";
+    } else shopping.frame.classList.add("hidden");
 });
 
-scan.start.addEventListener("click", () => {
-    // Set delay on appearance of stopscan button
-    setTimeout(function() {scan.stop.style.display = "block";}, 1400);
-    StartCameraScan();
-}); 
+scan.stop.addEventListener("click", StopCameraScan);
+scan.start.addEventListener("click", ScanProductBarcode); 
 
 fileinput.addEventListener('change', e => { GetFileBarcode(e); });
 

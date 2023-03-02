@@ -13,4 +13,16 @@ const filter = {
     title: document.querySelector("#shopping-list h3"),
 }
 
-export{ form, filter }
+const scan = {
+    start: document.getElementById("start-camera-scan"),
+    stop: document.getElementById("stop-camera-scan")
+} 
+
+const shopping = {
+  frame: document.querySelector("#shopping-card"),
+  button: document.querySelector("#shopping-card button"),
+  invite: document.querySelector("#shopping-card >section:first-of-type"),
+  card: document.querySelector("#shopping-card >section:last-of-type")
+} 
+
+export{ form, filter, scan, shopping}

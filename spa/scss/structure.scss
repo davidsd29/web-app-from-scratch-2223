@@ -9,23 +9,22 @@ ul {
 
 .btn {
     width: 100%;
-    padding: 1em;
+    padding: 0.5em 1em;
     color: color(secondary);
     border-radius: 1em;
     border: none;
-    font-weight: bold;
     background-color: skyblue;
     cursor: pointer;
 
     &:focus-visible {
-        background-color: color(focus);
+        background-color: color(focus) !important;
     }   
     &:hover {
-        background-color: color(hover);
+        background-color: color(hover) !important;
     }   
     
     &:active {
-        background-color: color(active);
+        background-color: color(active) !important;
     }
 }
 
@@ -44,14 +43,108 @@ main {
         padding: 1em;
         text-align: center;
         font-size: 1.5em;
-        border: 1px solid #ccc;
+        border: 1px solid color(highlight);
         border-radius: 1.5em;
         scroll-margin-top: 100px;
         scroll-margin-bottom: 100px;
         transition: 1s;
 
-        img {
-            width: 9em;
+        &#shopping-card {
+
+            h2 {
+                font-size: 1.2em;
+                margin-bottom: 2em;
+            }
+
+            > section {
+
+                &:first-of-type {
+                    padding: 1em;
+                    border-radius: 1em;
+                    border: 1px solid color(highlight);
+
+                    div{
+                        display: flex;
+                        justify-content: space-between;
+
+                        img {
+                            width: 4em;
+                            transform: rotate(-22deg) translateY(1.2em);
+                        }
+
+                        &:first-of-type {
+                            align-items: center;
+                            padding-left: 0.5em;
+                            border-radius: 1em;
+                            border: 2px solid color(button);
+                            overflow: hidden;
+                            gap: 1em;
+                        }
+
+                         &:last-of-type {
+                            margin-top: 1em;
+
+                             a {
+                                 width: 60%;
+                                 border-radius: 0.5em;
+                                 font-size: .7em;
+                                 text-decoration: none;
+                                 background-color: color(button);
+                             }
+
+                             button {
+                                 width: 30%;
+                                 border: 2px solid color(button);
+                                 background-color: color(quaternary);
+                             }
+                         }
+                           
+                        p {
+                            font-weight: bold;
+                            width: 8em;
+                        }
+                        }
+                    }
+
+                
+
+                &:last-of-type{
+                    height: auto;
+                    max-width: 13em;
+                    padding: 0.5em;
+                    background-color: deepskyblue;
+                    border-radius: 1em;
+                    border: 2px solid color(highlight);
+                    
+                    p {
+                        margin-top: 1em;
+                        color: color(quaternary);
+                        font-style: italic;
+                    }
+    
+                    div {
+                       border-radius: 1em;
+                       background-color: color(quaternary);
+        
+                       img {
+                           width: 90%;
+                       }
+                   }
+    
+                   img {
+                       width: 60%;
+                       margin-top: 1em;
+                   }
+                }
+            }
+            
+
+            
+        }
+
+        &#camera{
+            height: 100vw;
+            background-color: color(secondary);
         }
 
         &#shopping-list,
@@ -64,6 +157,10 @@ main {
                 margin-top: 1em;
                 box-shadow: 1px 5px 12px 0px color(secondary);
                 border-bottom: 1px solid #ccc;
+
+                &#empty-list {
+                    display: none;
+                }
 
                 img {
                     width: 50%;

@@ -11,21 +11,22 @@ html {
 header {
   position: sticky;
   top: 0;
-  height: 4em;
+  height: auto;
   width: 100%;
   text-align: center;
   background-color: darkgray;
   box-shadow: 0px -5px 25px 5px black;
   z-index: 100;
 }
+header h1 {
+  font-size: 5vw;
+}
 header ul {
   display: grid;
   grid-template-columns: 0.5fr 1fr 0.5fr;
   justify-content: center;
   align-items: center;
-}
-header ul li {
-  margin-top: 1em;
+  padding: 0.5em;
 }
 header ul li button {
   padding: 0.3em;
@@ -131,11 +132,6 @@ footer ul li span {
   box-shadow: 0px 1px 10px 1px red;
 }
 
-form fieldset {
-  display: flex;
-  flex-wrap: wrap;
-  border: none;
-}
 form#edit-product-form {
   display: grid;
   text-align: left;
@@ -157,26 +153,60 @@ form#edit-product-form select {
 form#edit-product-form input[type=submit] {
   margin: 8px 0;
 }
-form#filter-form h2 {
+
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+}
+
+#filters h2 {
   margin-bottom: 1em;
   font-size: 1em;
 }
-form#filter-form input[type=radio] {
+#filters input[type=radio] {
   margin-right: 1em;
 }
-form#filter-form input[type=submit] {
+#filters input[type=submit] {
   margin-top: 2em;
 }
 
-.go-card, .reclame, main > section {
+.go-cards div, .reclame, main > section {
   margin-bottom: 1em;
 }
 
-.go-card {
-  height: 11em;
+.go-cards {
+  display: grid;
+  gap: 1em;
+}
+@media screen and (min-width: 768px) {
+  .go-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.go-cards div {
+  height: auto;
   width: 100%;
+  max-width: 17em;
+  padding: 1em;
   border-radius: 1.5em;
   background-color: rgb(177, 230, 255);
+}
+.go-cards div:nth-of-type(4) {
+  height: 11em;
+  background-image: url("../img/sportdrank.jpg");
+}
+.go-cards div:nth-of-type(5) {
+  display: flex;
+  gap: 1em;
+}
+.go-cards div:nth-of-type(5) img {
+  width: 40%;
+  object-fit: contain;
+  transform: rotate(30deg);
+}
+.go-cards div:nth-of-type(5) p {
+  margin-top: 2em;
 }
 
 .reclame {
@@ -234,6 +264,78 @@ form#filter-form input[type=submit] {
   color: #FFFFFF;
 }
 
+.pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: auto;
+  padding: 1em;
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+  background-color: #FFFFFF;
+  border: 1px solid #ccc;
+  border-radius: 1.5em;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: all 0.3s;
+  z-index: 10;
+}
+.pop-up img {
+  width: 10em;
+}
+@media (min-width: 768px) {
+  .pop-up {
+    width: calc(100% - 2.5em);
+    max-width: 900px;
+  }
+}
+.pop-up#complete-pop-up p {
+  font-size: 2em;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+.pop-up#error-pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: auto;
+  padding: 1em;
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+  background-color: #FFFFFF;
+  border: 1px solid #ccc;
+  border-radius: 1.5em;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: all 0.5s;
+  z-index: 10;
+}
+.pop-up#error-pop-up p, .pop-up#error-pop-up h1 {
+  margin-bottom: 0.5em;
+}
+.pop-up#error-pop-up .close {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-size: 1.1em;
+  letter-spacing: 0.05rem;
+  color: inherit;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.pop-up#error-pop-up .close:hover {
+  color: #0dd8e6;
+}
+.pop-up.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 ul {
   list-style: none;
 }
@@ -244,22 +346,21 @@ ul a {
 
 .btn {
   width: 100%;
-  padding: 1em;
+  padding: 0.5em 1em;
   color: black;
   border-radius: 1em;
   border: none;
-  font-weight: bold;
   background-color: skyblue;
   cursor: pointer;
 }
 .btn:focus-visible {
-  background-color: #1B649C;
+  background-color: #1B649C !important;
 }
 .btn:hover {
-  background-color: #0dd8e6;
+  background-color: #0dd8e6 !important;
 }
 .btn:active {
-  background-color: #0d35e6;
+  background-color: #0d35e6 !important;
 }
 
 .hidden {
@@ -283,8 +384,77 @@ main > section:not(#product-detail) {
   scroll-margin-bottom: 100px;
   transition: 1s;
 }
-main > section:not(#product-detail) img {
-  width: 9em;
+main > section:not(#product-detail)#shopping-card h2 {
+  font-size: 1.2em;
+  margin-bottom: 2em;
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type {
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid #ccc;
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type div {
+  display: flex;
+  justify-content: space-between;
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type div img {
+  width: 4em;
+  transform: rotate(-22deg) translateY(1.2em);
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type div:first-of-type {
+  align-items: center;
+  padding-left: 0.5em;
+  border-radius: 1em;
+  border: 2px solid #2E9BD8;
+  overflow: hidden;
+  gap: 1em;
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type {
+  margin-top: 1em;
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type a {
+  width: 60%;
+  border-radius: 0.5em;
+  font-size: 0.7em;
+  text-decoration: none;
+  background-color: #2E9BD8;
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type button {
+  width: 30%;
+  border: 2px solid #2E9BD8;
+  background-color: #FFFFFF;
+}
+main > section:not(#product-detail)#shopping-card > section:first-of-type div p {
+  font-weight: bold;
+  width: 8em;
+}
+main > section:not(#product-detail)#shopping-card > section:last-of-type {
+  height: auto;
+  max-width: 13em;
+  padding: 0.5em;
+  background-color: deepskyblue;
+  border-radius: 1em;
+  border: 2px solid #ccc;
+}
+main > section:not(#product-detail)#shopping-card > section:last-of-type p {
+  margin-top: 1em;
+  color: #FFFFFF;
+  font-style: italic;
+}
+main > section:not(#product-detail)#shopping-card > section:last-of-type div {
+  border-radius: 1em;
+  background-color: #FFFFFF;
+}
+main > section:not(#product-detail)#shopping-card > section:last-of-type div img {
+  width: 90%;
+}
+main > section:not(#product-detail)#shopping-card > section:last-of-type img {
+  width: 60%;
+  margin-top: 1em;
+}
+main > section:not(#product-detail)#camera {
+  height: 100vw;
+  background-color: black;
 }
 main > section:not(#product-detail)#shopping-list li, main > section:not(#product-detail)#products li {
   display: flex;
@@ -294,6 +464,9 @@ main > section:not(#product-detail)#shopping-list li, main > section:not(#produc
   margin-top: 1em;
   box-shadow: 1px 5px 12px 0px black;
   border-bottom: 1px solid #ccc;
+}
+main > section:not(#product-detail)#shopping-list li#empty-list, main > section:not(#product-detail)#products li#empty-list {
+  display: none;
 }
 main > section:not(#product-detail)#shopping-list li img, main > section:not(#product-detail)#products li img {
   width: 50%;

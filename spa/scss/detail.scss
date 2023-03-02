@@ -1,12 +1,48 @@
-.go-card, .reclame, main>section {
+.go-cards div, .reclame, main>section {
     margin-bottom: 1em;
 }
 
-.go-card {
-    height: 11em;
-    width: 100%;
-    border-radius: 1.5em;
-    background-color: rgb(177, 230, 255);
+.go-cards {
+    display: grid;
+    gap: 1em;
+
+    @include respond-to(from-md) {
+        grid-template-columns: repeat(2, 1fr);         
+    }   
+    
+    // @include respond-to(from-md) {
+    //     grid-template-columns: repeat(3, 1fr);         
+    // }
+
+    div{
+        height: auto;
+        width: 100%;
+        max-width: 17em;
+        padding: 1em;
+        border-radius: 1.5em;
+        background-color: rgb(177, 230, 255);
+    
+        &:nth-of-type(4) {
+            height: 11em;
+            background-image: url("../img/sportdrank.jpg");
+
+        }
+    
+        &:nth-of-type(5) {
+            display: flex;
+            gap: 1em;
+            
+            img {
+                width: 40%;
+                object-fit: contain;
+                transform: rotate(30deg);
+            }
+    
+            p {
+                margin-top: 2em;
+            }
+        }
+    }
 }
 
 .reclame {
@@ -69,5 +105,85 @@
         border: .2em solid color(quaternary);
         border-radius: .8em;
         color: color(quaternary);
+    }
+}
+
+.pop-up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    padding: 1em;
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+    background-color: color(quaternary);
+    border: 1px solid color(highlight);
+    border-radius: 1.5em;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: all .3s;
+    z-index: 10;
+
+    img {
+        width: 10em;
+    }
+
+    @media (min-width: 768px) {
+        width: calc(100% - 2.5em);
+        max-width: 900px;
+    }
+
+    &#complete-pop-up {
+
+        p {
+            font-size: 2em;
+            font-style: italic;
+            margin-bottom: 1em;
+        }
+    }
+
+    &#error-pop-up {
+        position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            height: auto;
+            padding: 1em;
+            box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+            background-color: color(quaternary);
+            border: 1px solid color(highlight);
+            border-radius: 1.5em;
+            opacity: 0;
+            visibility: hidden;
+            text-align: center;
+            transform: translate(-50%, -50%) scale(0.9);
+            transition: all .5s;
+            z-index: 10;
+
+        p, h1{
+            margin-bottom: .5em;
+        }
+        .close {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 1.1em;
+            letter-spacing: 0.05rem;
+            color: inherit;
+            transition: all .4s;
+            cursor: pointer;
+
+            &:hover {
+                color: color(hover);
+            }
+        }  
+    }
+
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 }
