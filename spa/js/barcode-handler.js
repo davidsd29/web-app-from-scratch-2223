@@ -22,14 +22,27 @@ function ScanProductBarcode () {
         StopCameraScan();
         window.location.hash = `#product/${barcode}`;
         GetRouter();
-        console.log("lalal");
     };
 
     camera.scanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
     
     .catch((err) => {
         setTimeout(function() {scan.stop.style.display = "none";}, 1400);
-        console.log(err);
+
+        // action sap
+        // let barcode = 8718858613977;
+
+        // vitamine water
+        // let barcode = 8715600243949;
+
+        // AA
+        // let barcode = 87365290;
+
+        // Energy
+        // let barcode = 8710624030667;
+        // window.location.hash = `#product/${barcode}`;
+
+
         DisplayErrorPopUp(err);
     });
 }
@@ -58,7 +71,7 @@ function GetFileBarcode(event) {
     popUp.scan.classList.remove("open");
 
     if (event.target.files.length == 0) {
-        console.log("no file found");
+        DisplayErrorPopUp("no file found");
         return;
     }
 
@@ -95,7 +108,6 @@ function ScanCardBarcode() {
 
     camera.scanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback).catch((err) => {
         setTimeout(function() {scan.stop.style.display = "none";}, 1400);
-        console.log(err);
         DisplayErrorPopUp(err);
     });
 }

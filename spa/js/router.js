@@ -1,5 +1,6 @@
-import {GetProductData, GetSelectedProductData, GetGroceriesListData} from './API/fetch-product.js';
+import {GetProductData, GetSelectedProductData} from './API/fetch-product.js';
 import {FilterProduct} from './filter-products.js';
+import {GetGroceriesList} from './render-products.js';
 import {ScanCardBarcode} from './barcode-handler.js';
 import {CreateBarcodeImage} from './API/create-card.js';
 import {shopping} from './variable.js';
@@ -63,13 +64,13 @@ function GetRouter() {
         break; 
 
         case "#shopping-list":
-            
             if (linkParts.length > 1) {
                 const filterLink = linkParts[1]; // Get the filter from the hash
                 FilterProduct(filterLink);
             }
             
-            GetGroceriesListData();
+            // GetGroceriesListData();
+            GetGroceriesList();
             HideAllPages();
             page.shoppingList.classList.remove("hidden");
         break;        

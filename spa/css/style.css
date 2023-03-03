@@ -577,41 +577,22 @@ main > section:not(#product-detail)#shopping-list li aside h3, main > section:no
 }
 main > section:not(#product-detail)#shopping-list li aside div, main > section:not(#product-detail)#products li aside div {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+main > section:not(#product-detail)#shopping-list li aside div span, main > section:not(#product-detail)#products li aside div span {
+  color: #2E9BD8;
+}
+main > section:not(#product-detail)#shopping-list li aside section, main > section:not(#product-detail)#products li aside section {
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: start;
   align-items: center;
   margin-top: 2em;
 }
-main > section:not(#product-detail)#shopping-list li aside div p, main > section:not(#product-detail)#products li aside div p {
-  position: relative;
-  text-align: center;
-  line-height: 8em;
-  height: 5em;
-}
-main > section:not(#product-detail)#shopping-list li aside div p:first-of-type, main > section:not(#product-detail)#products li aside div p:first-of-type {
-  grid-area: Koolhydr;
-}
-main > section:not(#product-detail)#shopping-list li aside div p:nth-of-type(2), main > section:not(#product-detail)#products li aside div p:nth-of-type(2) {
-  grid-area: Sugar;
-}
-main > section:not(#product-detail)#shopping-list li aside div p:last-of-type, main > section:not(#product-detail)#products li aside div p:last-of-type {
-  grid-area: Salt;
-}
-@media screen and (max-width: 767px) {
-  main > section:not(#product-detail)#shopping-list li aside div p, main > section:not(#product-detail)#products li aside div p {
-    width: 100%;
-  }
-}
-main > section:not(#product-detail)#shopping-list li aside div p span, main > section:not(#product-detail)#products li aside div p span {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  width: 2em;
-  height: 2em;
-  border: 1px solid black;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 43px;
+main > section:not(#product-detail)#shopping-list li aside section p, main > section:not(#product-detail)#products li aside section p {
+  text-align: left;
+  line-height: 1.5em;
 }
 main > section:not(#product-detail)#shopping-list > div, main > section:not(#product-detail)#products > div {
   margin-top: 2em;

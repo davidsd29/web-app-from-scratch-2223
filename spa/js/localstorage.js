@@ -12,13 +12,22 @@ function DisplayTaskCompletePopUp(message) {
 
 function SaveProduct(product) {
   const groceriesList = JSON.parse(localStorage.getItem("groceries") || "[]");
-
+console.log(product)
     if (groceriesList.length == 0) {
       console.log("no products in de list");
-      localStorage.setItem("groceries", JSON.stringify(product));
+      localStorage.setItem("groceries", JSON.stringify([product]));
     } else {
+
+      groceriesList.forEach(listItem => {
+        if (product.productCode === listItem.productCode) {
+          console.log("hallo")
+          listItem.productAmount = listItem.productAmount + product.productAmount;
+        } else {
+          groceriesList.push(product);
+        }
+      });
+
       console.log("product saved");
-      groceriesList.push(product);
       localStorage.setItem("groceries", JSON.stringify(groceriesList));
 
       DisplayTaskCompletePopUp("Product is saved successfully")

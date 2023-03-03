@@ -1,9 +1,7 @@
 import {RenderProduct} from '../render-details.js';
 import {EditProduct} from '../render-details.js';
-import {RenderListProduct} from '../render-products.js';
-import {filter} from '../variable.js';
+import {RenderGroceriesListProduct} from '../render-products.js';
 
-const listFeedback = document.getElementById("empty-list");
 
 function GetProductData(barcode) {
     fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
@@ -21,30 +19,14 @@ function GetSelectedProductData(barcode) {
     }));
 }
 
-function GetGroceriesListData() {
-    const groceriesList = JSON.parse(localStorage.getItem("groceries") || "[]");
-
-    if (groceriesList.length === 0) {
-        listFeedback.style.display = "block";
-    } else listFeedback.style.display = "none"; 
-
-    filter.value.textContent = groceriesList.length + " items";
-
-    groceriesList.forEach(item => {
-        console.log(item.productCode);
-        
-        fetch(`https://world.openfoodfacts.org/api/v0/product/${item.productCode}.json`)
-        .then((response) => response.json())
-        .then(( data => {
-            
-            // if(groceriesListItemcount != groceriesList.length ){
-                RenderListProduct(data.product);
-            // }    
+function FetchGroceriesList(item) {          
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${item.productCode}.json`)
+    .then((response) => response.json())
+    .then(( data => {
+            RenderGroceriesListProduct(data.product, item.productAmount);
         }));
-    });
+} 
 
-// groceriesListItemcount = groceriesList.length;
-}
 
 // GetGroceriesListData();
-export { GetProductData, GetGroceriesListData, GetSelectedProductData };
+export { GetProductData, FetchGroceriesList, GetSelectedProductData };

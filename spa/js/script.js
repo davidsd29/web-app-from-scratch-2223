@@ -21,6 +21,7 @@ function GetCodeFromUrl() {
     }
 }
 
+
 form.filter.addEventListener("input", (e) => {
     e.preventDefault();
     window.location.hash = `#shopping-list/filter= ${e.target.value}`;
