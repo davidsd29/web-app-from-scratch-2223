@@ -422,25 +422,31 @@ main > section:not(#product-detail) {
   transition: 1s;
 }
 main > section:not(#product-detail)#welcome {
-  height: 31em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 2em;
-  width: calc(100vw - 10em);
+  gap: 1em;
   max-width: 25em;
+  min-width: 13em;
+  height: fit-content;
   margin-left: auto;
   margin-right: auto;
+}
+@media screen and (min-width: 768px) {
+  main > section:not(#product-detail)#welcome {
+    width: calc(100vw - 10em);
+  }
+}
+main > section:not(#product-detail)#welcome img {
+  height: 10em;
 }
 main > section:not(#product-detail)#welcome div {
   border-radius: 50%;
   background-color: red;
   width: 80%;
-  height: 50%;
 }
 main > section:not(#product-detail)#welcome div span {
-  font-size: 128px;
+  font-size: 4em;
 }
 main > section:not(#product-detail)#welcome div span::after {
   content: "🍍";

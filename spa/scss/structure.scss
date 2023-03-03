@@ -51,25 +51,31 @@ main {
         transition: 1s;
 
         &#welcome {
-            height: 31em;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            gap: 2em;
-            width: calc(100vw - 10em);
+            gap: 1em;
             max-width: 25em;
+            min-width: 13em;
+            height: fit-content;
             margin-left: auto;
             margin-right: auto;
+
+            @include respond-to(from-md) {
+                width: calc(100vw - 10em);
+            }
+            img {
+                height: 10em;
+            }
             
             div {
                 border-radius: 50%;
                 background-color: red;
                 width: 80%;
-                height: 50%;
+                // height: 50%;
         
                 span {
-                    font-size: 128px;
+                    font-size: 4em;
 
                     &::after {
                         content: '🍍';

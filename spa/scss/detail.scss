@@ -142,8 +142,8 @@
         margin-bottom: 1em;
         transition: 1s;
         @include respond-to(from-md) {
-                font-size: 1.5em;
-            }
+            font-size: 1.5em;
+        }
     }
 
     @media (min-width: 768px) {
