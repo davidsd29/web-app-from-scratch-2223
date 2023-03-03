@@ -1,10 +1,10 @@
 ul {
     list-style: none;
+}
 
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .btn {
@@ -29,7 +29,7 @@ ul {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 main {
@@ -39,15 +39,87 @@ main {
     padding: 2em;
     overflow-x: hidden;
 
-     > section:not(#product-detail) {
+    > section:not(#product-detail) {
         padding: 1em;
         text-align: center;
         font-size: 1.5em;
         border: 1px solid color(highlight);
         border-radius: 1.5em;
-        scroll-margin-top: 100px;
-        scroll-margin-bottom: 100px;
+        margin-bottom: 6.25em;
+        scroll-margin-top: 6.25em;
+        scroll-margin-bottom: 6.25em;
         transition: 1s;
+
+        &#welcome {
+            height: 31em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2em;
+            width: calc(100vw - 10em);
+            max-width: 25em;
+            margin-left: auto;
+            margin-right: auto;
+            
+            div {
+                border-radius: 50%;
+                background-color: red;
+                width: 80%;
+                height: 50%;
+        
+                span {
+                    font-size: 128px;
+
+                    &::after {
+                        content: '🍍';
+                        animation: changeFruitEmoji 8s infinite;
+                    }
+                }
+            }
+            
+            @keyframes changeFruitEmoji {
+                10% {
+                    content: '🍓';
+                }
+        
+                20% {
+                    content: '🍑';
+                }
+        
+                30% {
+                    content: '🍋';
+                }
+        
+                40% {
+                    content: '🍒';
+                }
+        
+                50% {
+                    content: '🍊'
+                }
+        
+                60% {
+                    content: '🍌'
+                }
+        
+                70% {
+                    content: '🍏'
+                }
+        
+                80% {
+                    content: '🍉'
+                }
+        
+                90% {
+                    content: '🍇';
+                }
+        
+                100% {
+                    content: '🥝';
+                }
+            }
+        }
 
         &#shopping-card {
 

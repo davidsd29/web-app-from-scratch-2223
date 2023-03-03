@@ -12,7 +12,7 @@
     <header>
         <ul>
             <li>
-                <button id="start-camera-scan">
+                <button id="scan-toggle">
                     <i class="fa fa-barcode"></i>
                 </button>
             </li>
@@ -26,33 +26,58 @@
             </li>
         </ul>
     </header>
+    <div id="complete-pop-up" class="pop-up">
+        <p>Item is succesfully opgelsagen</p>
+        <img src="img/check-mark.png" alt="A Check image">
+    </div>
+
+    <div id="error-pop-up" class="pop-up">
+        <span class="close">Close</span>
+        <h2>Sorry...</h2>
+        <p id="error-text"></p>
+        <img src="img/whoops.png" alt="">
+    </div>
+    
+    <div id="scan-pop-up" class="pop-up">
+        <span class="close">Close</span>
+        <h2>Hey There !</h2>
+        <p>Do you want to scan or upload an image?</p>
+
+        <div>
+            <img src="img/scan.png" alt="Scan icon">
+            <img src="img/upload.png" alt="Upload file icon">
+        </div>
+
+        <div>
+            <button id="start-camera-scan" class="btn"> Scan</button>
+
+            <label for="qr-input-file" class="btn">
+                Upload
+                <input type="file" id="qr-input-file" accept="image/*" capture>
+            </label>
+        </div>
+        
+
+    </div>
 
     <main>
-
-        <div id="error-pop-up" class="pop-up">
-            <span class="close">close</span>
-            <h1>Sorry...</h1>
-            <p id="error-text"></p>
-            <img src="img/whoops.png" alt="Car">
-        </div>
-
-        <div id="complete-pop-up" class="pop-up">
-            <p>Item is succesfully opgelsagen</p>
-            <img src="img/check-mark.png" alt="A Check image">
-        </div>
-
-        
         <section id="camera" class="hidden">
             <button id="stop-camera-scan" ></button>
             <div id="scanner"></div>
         </section>
 
+        <section id="welcome">
+            <img src="img/logo.png" alt="Goodie Foodie logo">
+            <div><span></span></div>
+            <a href="#home" class="btn">Let's get Started</a>
+        </section>
+
         <section id="home">
         <!-- <section id="home" class="hidden"> -->
            
-            <h1></h1>
+            <h2>Welcome Jhon Doe</h2>
             <div id="reader" width="200px" height="200px"></div>
-            <input type="file" id="qr-input-file" accept="image/*" capture>
+            
             <div class="go-cards">
                 <div></div>
                 <div></div>
@@ -86,7 +111,7 @@
         </section>
 
       <!-- <section id="product-detail"> -->
-      <section id="product-detail" class="hidden">
+      <section id="product-detail">
         
         <section class="heading">
             <button id="edit-product-btn">
@@ -151,7 +176,7 @@
         </section> 
         
         <!-- <section id="edit-product"> -->
-        <section id="edit-product" class="hidden">
+        <section id="edit-product">
             <form action="" id="edit-product-form">
                 <label for="product-img">Product Image</label>
                 <img src="" alt="Product image" id="saved-product-img">
@@ -204,7 +229,7 @@
             </section>
         </section>
         
-        <section id="products" class="hidden">
+        <section id="products">
             <h1></h1>
 
             <ul>
@@ -233,7 +258,7 @@
 
         </section>        
         
-        <section id="shopping-list" class="hidden">
+        <section id="shopping-list">
         <!-- <section id="shopping-list"> -->
 
             <aside>
@@ -270,7 +295,8 @@
                         <input type="submit" id="filter-submit" class="btn" value="Apply">
                 </div>
             </aside>
-            <h1></h1>
+
+            <h2>Your shopping list</h2>
 
             <ul id="list-frame">
                 <li id="empty-list">

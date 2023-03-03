@@ -44,12 +44,16 @@ header {
         flex-direction: row;
         width: 100%;
         max-width: 37.5em;
-        transform: translateX(calc(100vw - 2.5em));
+        transform: translateX(calc(100vw - 2em));
         transition: all 0.3s ease-in;
         z-index: 100;
         
         &:has(input[name="open-filter"]:checked) {
-            transform: translateX(calc(100vw - 14em));
+                transform: translateX(calc(100vw - 12em));
+            }
+        
+        @include respond-to(from-md) {
+            left: 0;
         }
 
         > label {

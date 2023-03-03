@@ -15,14 +15,21 @@ const filter = {
 
 const scan = {
     start: document.getElementById("start-camera-scan"),
-    stop: document.getElementById("stop-camera-scan")
+    stop: document.getElementById("stop-camera-scan"),
+    popup: document.getElementById("scan-toggle")
 } 
 
 const shopping = {
-  frame: document.querySelector("#shopping-card"),
+  frame: document.getElementById("shopping-card"),
   button: document.querySelector("#shopping-card button"),
   invite: document.querySelector("#shopping-card >section:first-of-type"),
   card: document.querySelector("#shopping-card >section:last-of-type")
 } 
 
-export{ form, filter, scan, shopping}
+const popUp = {
+    error: document.getElementById("error-pop-up"),
+    scan: document.getElementById("scan-pop-up"),
+    closeBtn: document.querySelectorAll(".close")
+}
+
+export{ form, filter, scan, shopping, popUp }

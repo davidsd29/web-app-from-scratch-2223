@@ -4,14 +4,8 @@ import {ScanCardBarcode} from './barcode-handler.js';
 import {CreateBarcodeImage} from './API/create-card.js';
 import {shopping} from './variable.js';
 
-
-const title = {
-    home: document.querySelector("#home h1"),
-    shoppingList: document.querySelector("#shopping-list h1"),
-    productList: document.querySelector("#products h1"),
-}
-
-const pages = {
+const page = {
+    welcome: document.getElementById("welcome"),
     home: document.getElementById("home"),
     card: document.getElementById("shopping-card"),
     shoppingList: document.getElementById("shopping-list"),
@@ -19,80 +13,86 @@ const pages = {
     detail: document.getElementById("product-detail"),
     edit: document.getElementById("edit-product"),
 }
+
+const errorPopUp = document.getElementById("error-pop-up");
+const completePopUTpext = document.querySelector("#error-pop-up p");
+
+function DisplayTaskCompletePopUp(message) {
+    errorPopUp.classList.add("open");
+    completePopUTpext.textContent = message;
+}
+
 function CheckCardExist() {
     const shoppingCardBarcode = JSON.parse(localStorage.getItem("shoppingCard") || "[]");
-        if (shoppingCardBarcode.length == 0) {
-            shopping.card.classList.add("hidden");
-        } else {
-            shopping.card.classList.remove("hidden");
-            shopping.invite.classList.add("hidden");
-        }
+
+    if (shoppingCardBarcode.length == 0) {
+        shopping.card.classList.add("hidden");
+    } else {
+        shopping.card.classList.remove("hidden");
+        shopping.invite.classList.add("hidden");
+    }
+}
+
+// Hide all pages
+function HideAllPages() {
+    if (!page.welcome.classList.contains("hidden"))        page.welcome.classList.add("hidden");
+    if (!page.home.classList.contains("hidden"))           page.home.classList.add("hidden");
+    if (!page.card.classList.contains("hidden"))           page.card.classList.add("hidden");
+    if (!page.shoppingList.classList.contains("hidden"))   page.shoppingList.classList.add("hidden");
+    if (!page.productList.classList.contains("hidden"))    page.productList.classList.add("hidden");
+    if (!page.edit.classList.contains("hidden"))           page.edit.classList.add("hidden");
+    if (!page.detail.classList.contains("hidden"))         page.detail.classList.add("hidden");
 }
 
 function GetRouter() {
     const hash = window.location.hash; // Get the hash from the URL
     const linkParts = hash.split('/'); // Split the hash into an array of parts
+
     switch (linkParts[0]) { // Check which part of the hash we're dealing with
-        case "#home":
-            CheckCardExist();
+        case "":
+            HideAllPages();
+            page.welcome.classList.remove("hidden");
+        break;
         
-            title.home.textContent = "Welcome Jhon Doe";
-            if (pages.home.classList.contains("hidden")) pages.home.classList.remove("hidden");
-            if (!pages.edit.classList.contains("hidden")) pages.edit.classList.add("hidden");
-            if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
-            if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
-            if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
-            if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
+        case "#home":
 
-
+            CheckCardExist();
+            HideAllPages();
+            page.home.classList.remove("hidden");
+            page.card.classList.remove("hidden");
         break; 
 
         case "#shopping-list":
-             title.shoppingList.textContent = "Shopping list";
-            if (pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.remove("hidden");
-            if (!pages.edit.classList.contains("hidden")) pages.edit.classList.add("hidden");
-            if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
-            if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
-            if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
-            if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
-
-            GetGroceriesListData();
-
-             if (linkParts.length > 1) {
+            
+            if (linkParts.length > 1) {
                 const filterLink = linkParts[1]; // Get the filter from the hash
-                FilterProduct(filterLink);  
-                console.log(filterLink);
-             }
+                FilterProduct(filterLink);
+            }
+            
+            GetGroceriesListData();
+            HideAllPages();
+            page.shoppingList.classList.remove("hidden");
         break;        
         
         case "#products":
-            title.productList.textContent = "Resent scaned products";
-            if (pages.productList.classList.contains("hidden")) pages.productList.classList.remove("hidden");
-            if (!pages.edit.classList.contains("hidden")) pages.edit.classList.add("hidden");
-            if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
-            if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
-            if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
-            if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
 
+            HideAllPages();
+            page.productList.classList.remove("hidden");
         break;   
         
         case "#product":
+
             if (linkParts.length > 1) {
                 const barcode = linkParts[1]; // Get the ID from the hash
                 GetProductData(barcode);
-
-                title.productList.textContent = "Resent scaned products";
-                if (pages.detail.classList.contains("hidden")) pages.detail.classList.remove("hidden");
-                if (!pages.edit.classList.contains("hidden")) pages.edit.classList.add("hidden");
-                if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
-                if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
-                if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
-                if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
-
             }
+
+            HideAllPages();
+            page.detail.classList.remove("hidden");
         break;         
         
         case "#shopping-card":
+
             // let number = 2622213062385;
             if (linkParts.length > 1) {
                 const barcode = linkParts[1]; // Get the ID from the hash
@@ -102,33 +102,24 @@ function GetRouter() {
             }
 
             CheckCardExist();
-            title.productList.textContent = "Resent scaned products";
-            if (pages.card.classList.contains("hidden")) pages.card.classList.remove("hidden");
-            if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
-            if (!pages.edit.classList.contains("hidden")) pages.edit.classList.add("hidden");
-            if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
-            if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
-            if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
-            
+            HideAllPages();
+            page.card.classList.remove("hidden");  
         break;  
         
         case "#edit-product":
+
             if (linkParts.length > 1) {
                 const barcode = linkParts[1]; // Get the ID from the hash
                 GetSelectedProductData(barcode);
-
-                title.productList.textContent = "Resent scaned products";
-                if (pages.edit.classList.contains("hidden")) pages.edit.classList.remove("hidden");
-                if (!pages.detail.classList.contains("hidden")) pages.detail.classList.add("hidden");
-                if (!pages.home.classList.contains("hidden")) pages.home.classList.add("hidden");
-                if (!pages.shoppingList.classList.contains("hidden")) pages.shoppingList.classList.add("hidden");
-                if (!pages.productList.classList.contains("hidden")) pages.productList.classList.add("hidden");
-                 if (!shopping.frame.classList.contains("hidden")) shopping.frame.classList.add("hidden");
             }
+
+            HideAllPages();
+            page.edit.classList.remove("hidden");
         break;        
         
         default:
-            console.log("nothing found");
+            DisplayTaskCompletePopUp("We couldn't find the url you are looking for.")
+            window.location.hash = "#home";
     }
 }
 

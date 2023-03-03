@@ -109,7 +109,7 @@
 }
 
 .pop-up {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     width: 90%;
@@ -130,55 +130,85 @@
         width: 10em;
     }
 
+    h2 {
+        font-size: 1.3em;
+        transition: 1s;
+        @include respond-to(from-md) {
+            font-size: 2.5em;
+        }
+    }
+
+    p {
+        margin-bottom: 1em;
+        transition: 1s;
+        @include respond-to(from-md) {
+                font-size: 1.5em;
+            }
+    }
+
     @media (min-width: 768px) {
         width: calc(100% - 2.5em);
         max-width: 900px;
     }
 
     &#complete-pop-up {
-
         p {
-            font-size: 2em;
             font-style: italic;
-            margin-bottom: 1em;
         }
     }
 
     &#error-pop-up {
-        position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 90%;
-            height: auto;
-            padding: 1em;
-            box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
-            background-color: color(quaternary);
-            border: 1px solid color(highlight);
-            border-radius: 1.5em;
-            opacity: 0;
-            visibility: hidden;
-            text-align: center;
-            transform: translate(-50%, -50%) scale(0.9);
-            transition: all .5s;
-            z-index: 10;
-
-        p, h1{
+        p, h2{
             margin-bottom: .5em;
         }
-        .close {
-            position: absolute;
-            top: 5%;
-            left: 5%;
-            font-size: 1.1em;
-            letter-spacing: 0.05rem;
-            color: inherit;
-            transition: all .4s;
-            cursor: pointer;
+    }    
+    
+    &#scan-pop-up {
+        width: 70%;
 
-            &:hover {
-                color: color(hover);
+        h2{
+            margin-bottom: 1em;
+        }
+        div {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 2em;
+
+            &:first-of-type{
+                margin: 3em 0;
             }
-        }  
+
+            input {
+                display: none;
+            }
+            img {
+                width: 30%;
+            }
+
+            label, button {
+                width: 50%;
+                max-width: 20em;
+            }
+
+            label{
+                max-width: 18em;
+            }
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        font-size: 1.1em;
+        letter-spacing: 0.05rem;
+        color: inherit;
+        transition: all .4s;
+        cursor: pointer;
+
+        &:hover {
+            color: color(hover);
+        }
     }
 
     &.open {
@@ -186,4 +216,8 @@
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
+}
+
+.open + main {
+    filter: blur(7px);
 }

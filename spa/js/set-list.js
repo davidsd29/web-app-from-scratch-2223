@@ -12,6 +12,7 @@ const count = {
 
 count.counterIndex.textContent = counter;
 
+if (counter < 0) counter = 0;
 
 function SetProduct(barcode) {
 
@@ -25,6 +26,7 @@ function SetProduct(barcode) {
         CheckShoppingList(counter);
 
         counter = 0;
+        count.counterIndex.textContent = counter;
         
     } else {
         count.counterIndex.classList.add("required");

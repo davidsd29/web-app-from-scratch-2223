@@ -1,16 +1,10 @@
 import {GetRouter} from './router.js';
 import {ScanProductBarcode , StopCameraScan, GetFileBarcode} from './barcode-handler.js';
-import {scan, shopping} from './variable.js';
+import {scan, shopping, popUp} from './variable.js';
 import {PostProductData} from './API/post-product.js';
 
 const fileinput = document.getElementById("qr-input-file");
 const editBtn = document.getElementById("edit-product-btn");
-
-
-const popUp = {
-    frame: document.getElementById("error-pop-up"),
-    closeBtn: document.querySelector(".close")
-}
 
 const form = {
     edit: document.getElementById("edit-product-form"),
@@ -38,9 +32,12 @@ form.edit.addEventListener("sumbit", (e) => {
     PostProductData(barcode);
 });
 
-popUp.closeBtn.addEventListener("click", () => {
-    popUp.frame.classList.remove("open");
-});
+popUp.closeBtn.forEach((button) => {
+    button.addEventListener("click", () => {
+        popUp.error.classList.remove("open");
+        popUp.scan.classList.remove("open");
+    })
+})
 
 editBtn.addEventListener("click", () => {
     const barcode = GetCodeFromUrl();
@@ -54,7 +51,14 @@ shopping.button.addEventListener("click", () => {
 });
 
 scan.stop.addEventListener("click", StopCameraScan);
-scan.start.addEventListener("click", ScanProductBarcode); 
+scan.start.addEventListener("click", () => {
+    ScanProductBarcode();
+    popUp.scan.classList.remove("open")
+}); 
+
+scan.popup.addEventListener("click", () => {
+    popUp.scan.classList.add("open")
+}); 
 
 fileinput.addEventListener('change', e => { GetFileBarcode(e); });
 

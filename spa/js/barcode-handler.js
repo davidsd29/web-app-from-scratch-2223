@@ -1,4 +1,4 @@
-import {scan} from './variable.js';
+import {scan, popUp} from './variable.js';
 
 const camera = {
      scanner: new Html5Qrcode("scanner"),
@@ -7,7 +7,6 @@ const camera = {
 }
 
 const fileCodeReader = new Html5Qrcode("reader");
-const popUp = document.getElementById("error-pop-up");
 const errorText = document.getElementById("error-text");
 
 
@@ -56,6 +55,8 @@ function StopCameraScan() {
 
 
 function GetFileBarcode(event) {
+    popUp.scan.classList.remove("open");
+
     if (event.target.files.length == 0) {
         console.log("no file found");
         return;
@@ -101,7 +102,7 @@ function ScanCardBarcode() {
 
 function DisplayErrorPopUp(errorMessage) {
     if (!camera.frame.classList.contains("hidden")) {camera.frame.classList.add("hidden");}
-    popUp.classList.add("open");
+    popUp.error.classList.add("open");
     errorText.textContent = errorMessage;
 }
 
