@@ -60,9 +60,9 @@ scan.popup.addEventListener("click", () => {
     popUp.scan.classList.add("open")
 }); 
 
-fileinput.addEventListener('change', e => { GetFileBarcode(e); });
+fileinput.addEventListener("change", e => { GetFileBarcode(e); });
 
-window.onload = GetRouter(); 
-window.addEventListener('hashchange', () => {
+window.addEventListener("load", GetRouter);
+window.addEventListener("hashchange", () => {
     GetRouter();
 }, false);
